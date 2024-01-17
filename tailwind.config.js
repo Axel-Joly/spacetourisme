@@ -8,16 +8,29 @@ export default {
     data: {
       checked: 'ui~="checked"',
     },
+    fontSize: {
+      sm: '0.8rem',
+      base: '1rem',
+      xl: '1.25rem',
+      '2xl': '1.563rem',
+      '3xl': '1.953rem',
+      '4xl': '2.441rem',
+      '5xl': '3.052rem',
+      '6xl' : '76px',
+      '7xl' : '96px',
+      '8xl' : '100px',
+      '9xl' : '150px',
+    },
     extend: {
       colors: {
         'light-blue': '#D0D6F9',
         'dark-blue': '#0B0D17',
       },
-      
     },
     fontFamily: {
       'bellefair': ["Bellefair"],
-      'barlow' :["Barlow Condensed"],
+      'barlow':["Barlow"],
+      'barlowC':["Barlow Condensed"],
     },
     screens: {
     'sm': '540px',
