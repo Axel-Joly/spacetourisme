@@ -4,7 +4,7 @@
 <?php
     $destination ="Lune";
 ?>
-
+<body class='bg-desti text-white bg-cover bg-center bg-no-repeat flex flex-col min-h-screen'>
 @include('components.nav')
 <main class='grid lg:grid-cols-2 lg:grid-row-2 my-20 mx-[10%] '>
 
