@@ -16,7 +16,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('pages.index'); 
 });
+Route::get('/welcome', function () {
+    return view('welcome'); 
+});
 Route::get('/destination', function () {
+    return view('pages.destination');
+});
+Route::get('/destination/{name}', function () {
+    $data =[
+        []
+    ];
     return view('pages.destination');
 });
 Route::get('/equipage', function () {
