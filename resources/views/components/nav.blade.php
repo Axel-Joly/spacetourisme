@@ -23,7 +23,7 @@
             <a class='sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300   ' href="/" ><span class=" font-black  sm:hidden xl:inline">00 </span>  ACCEUIL</a>
         </li>
         <li class='hover:border-r-white hover:border-r-4 sm:border-none' >
-            <a class=' sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 ' href="/destination"><span class="font-black sm:hidden xl:inline">01 </span> DESTINATION</a>
+            <a class=' sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 ' href="/destination/Lune"><span class="font-black sm:hidden xl:inline">01 </span> DESTINATION</a>
         </li>
         <li class='hover:border-r-white hover:border-r-4 sm:border-none'>
             <a class='sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300' href="/equipage"><span class="font-black sm:hidden xl:inline">02 </span> EQUIPAGE</a>
