@@ -25,12 +25,26 @@
 
         <div class='pt-10'>
             <ul class='flex flex-row justify-evenly lg:justify-start lg:gap-10 uppercase font-barlow tracking-widest underline-offset-[10px] '>
-  
+                @if($planet != 'Lune')
                 <li class='hover:underline decoration-4 decoration-gray-600'><a href="/destination/Lune">Lune</a></li>
+                @else
+                <li class='underline decoration-4 decoration-white'><a href="/destination/Lune">Lune</a></li>
+                @endif
+                @if($planet != 'Mars')
                 <li class='hover:underline decoration-4 decoration-gray-600'><a href="/destination/Mars">Mars</a></li>
+                @else
+                <li class='underline decoration-4 decoration-white'><a href="/destination/Mars">Mars</a></li>
+                @endif
+                @if($planet != 'Europe')
                 <li class='hover:underline decoration-4 decoration-gray-600'><a href="/destination/Europe">Europe</a></li>
+                @else
+                <li class='underline decoration-4 decoration-white'><a href="/destination/Europe">Europe</a></li>
+                @endif
+                @if($planet != 'Titan')
                 <li class='hover:underline decoration-4 decoration-gray-600'><a href="/destination/Titan">Titan</a></li>
-  
+                @else
+                <li class='underline decoration-4 decoration-white'><a href="/destination/Titan">Titan</a></li>
+                @endif
             </ul>
         </div>
 

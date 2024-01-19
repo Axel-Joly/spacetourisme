@@ -20,16 +20,15 @@ Route::get('/welcome', function () {
     return view('welcome'); 
 });
 
+
+
 Route::get('/destination/{name}',[PageController::class, 'destination']);
 
-Route::get('/destination', function () {
-    
-    return view('pages.destination');
-});
 
-Route::get('/equipage', function () {
-    return view('pages.equipage');
-});
+
+Route::get('/equipage/{name}',[PageController::class, 'crew']);
+
+
 Route::get('/technologie', function () {
     return view('pages.technologie');
 });

@@ -2,26 +2,58 @@
 
 @section('content')
 
-<body class=' lg:bg-crew text-white bg-cover bg-no-repeat'>
+<body class=' bg-crew text-white bg-cover bg-center bg-no-repeat flex flex-col min-h-screen '>
 @include('components.nav')
-<main class='grid md:grid-cols-3 pt-32 pb-24 '>
-    <div class=" md:col-span-2 flex flex-col items-center justify-center lg:pt-32 lg:pl-36">
-        <div class="text-center lg:text-left" >
-        <h2 class="font-barlow sm:text-2xl xl:text-3xl sm:tracking-widest mb-10">DONC VOUS VOULEZ VOYAGER DANS</h2>
-        <h1 class="font-bellefair text-7xl sm:text-[100px] xl:text-[150px] mb-10">L'ESPACE</h1>
-        <p class="font-barlow md:text-[16px] lg:text-[18px] tracking-widest md:mx-10  lg:mx-0 lg:mr-36">Soyons objectif; si vous voulez aller dans l'espace, vous pouvez aller véritablement dans le véritable espace et non juste planer sur le bord de celui-ci. Eh bien, asseyez-vous parce que nous allons vous donner une expérience vraiment extraordinaire!
-        </p>
+<main class='grid lg:grid-cols-2 lg:grid-row-3 mt-10 mb-0 sm:mt-20 mx-[10%] '>
+
+    <div class=" flex flex-col justify-center sm:justify-start lg:pb-32 sm:ml-[-8%]lg:ml-0">
+        <div class="" >
+            <p class='font-barlow tracking-widest text-[14px] sm:text-2xl'><span class='text-gray-600 font-black whitespace-pre'>01 </span> CHOISISSEZ VOTRE DESTINATION</p>
+        </div>
+        <div class='pt-5 text-center lg:text-left'>
+            <h2 class='font-bellefair uppercase text-3xl text-gray-600'>{{$grade}}</h2>
+            <h1 class=' text-5xl lg:text-6xl  whitespace-nowrap font-bellefair uppercase'>{{$nom}}  </h1>
+        </div>
+
+        <div class='pb-10 text-[18px] font-barlow font-thin tracking-widest h-[50%] text-center lg:text-left'>
+           
+            <p>{{$description}}</p>
+            
+        </div>
+
+        <div class='pt-10'>
+            <ul class='flex flex-row justify-evenly lg:justify-start lg:gap-10 uppercase font-barlow tracking-widest underline-offset-[10px] '>
+                @if($nom != 'Douglas Hurley')
+                <li class='hover:underline  rounded-full h-3 list-inside decoration-4 bg-gray-600'><a href="/equipage/douglas_hurley" class='opacity-0 ' >o</a></li>
+                @else
+                <li class='hover:underline  rounded-full h-3 list-inside decoration-4 bg-white'><a href="/equipage/douglas_hurley" class='opacity-0 ' >o</a></li>
+                @endif
+                @if($nom != 'Mark Shuttleworth')
+                <li class='hover:underline  rounded-full h-3 decoration-4 bg-gray-600'><a href="/equipage/mark_shuttleworth" class='opacity-0 '>o</a></li>
+                @else
+                <li class='hover:underline  rounded-full h-3 decoration-4 bg-white'><a href="/equipage/mark_shuttleworth" class='opacity-0 '>o</a></li>
+                @endif
+                @if($nom != 'Victor Glover')
+                <li class='hover:underline  rounded-full h-3 decoration-4 bg-gray-600'><a href="/equipage/victor_glover" class='opacity-0 '>o</a></li>
+                @else
+                <li class='hover:underline  rounded-full h-3 decoration-4 bg-white'><a href="/equipage/victor_glover" class='opacity-0 '>o</a></li>
+                @endif
+                @if($nom != 'Anousheh Ansari')
+                <li class='hover:underline  rounded-full h-3 decoration-4 bg-gray-600'><a href="/equipage/anousheh_ansari" class='opacity-0 '>o</a></li>
+                @else
+                <li class='hover:underline  rounded-full h-3 decoration-4 bg-white'><a href="/equipage/anousheh_ansari" class='opacity-0 '>o</a></li>
+                @endif
+              
+                
+            </ul>
         </div>
     </div>
-    <div class="grid mt-20 lg:mt-40 xl:pr-20">
-        <div></div>
-        <div class=" flex items-start justify-center " >
-            <div class="xl:mt-24 flex rounded-full bg-white text-black size-64 justify-center items-center ">
-                <a class="titre4" href="">EXPLORER</a>
-            </div>
-            <div class="xl:mt-24 hover:scale-150 duration-300 size-64 rounded-full bg-white/10 absolute scale-100">
-            </div>
-        </div>   
+
+    <div class='flex flex-col lg:ml-20 mb-0  '>
+        <div class="flex  justify-around align-end lg:ml-[10%] mb-0 mt-[15%]">
+         <img  src="{{ $image }}"/>
+        </div>
+
     </div>
 </main>
 

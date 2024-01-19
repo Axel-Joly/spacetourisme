@@ -3,7 +3,7 @@
 
 @section('content')
 
-<body class='bg-tech text-white bg-cover bg-no-repeat'>
+<body class='bg-tech text-white bg-cover bg-no-repeat flex flex-col min-h-screen'>
 @include('components.nav')
 <main class='grid md:grid-cols-3 pt-32 pb-24 '>
     <div class=" md:col-span-2 flex flex-col items-center justify-center lg:pt-32 lg:pl-36">

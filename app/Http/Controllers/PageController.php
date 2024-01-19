@@ -12,77 +12,132 @@ class PageController extends Controller
 {
     public function destination(): View
     {
-   
-    $destinations = [
-        'Lune'=>[
-            'nom' => 'Lune',
+        // définition des données
+        $destinations = [
+            'Lune'=>[
+                'nom' => 'Lune',
 
-            'image' => asset("/img/Lune.png"),
+                'image' => asset("/img/Lune.png"),
 
-            'description' => "Voyez notre planète comme vous ne l'avez jamais vue auparavant. Un parfait voayage de détente pour vous aider à prendre du recul et revenir requinquer. Pendant que vous y êtes, plangez-vous dans l'histoire en visitant les sites d'atterrissage de Luna 2 et Apollo 11.",
+                'description' => "Voyez notre planète comme vous ne l'avez jamais vue auparavant. Un parfait voayage de détente pour vous aider à prendre du recul et revenir requinquer. Pendant que vous y êtes, plangez-vous dans l'histoire en visitant les sites d'atterrissage de Luna 2 et Apollo 11.",
 
-            'distance' => "384 000 km",
+                'distance' => "384 000 km",
 
-            'durée' => "3 jours"
-        ],
-        'Mars'=>[
-            'nom' => 'Mars',
+                'durée' => "3 jours"
+            ],
+            'Mars'=>[
+                'nom' => 'Mars',
 
-            'image' => asset("/img/Mars.png"),
+                'image' => asset("/img/Mars.png"),
 
-            'description' => "N'oubliez pas vos bottes de randonnée. Vous en aurez besoin pour gravir le mont Olympus, la plus haute montagne planétaire dans notre système solaire. Il fait deux fois et demie la taille de l'Everest!",
+                'description' => "N'oubliez pas vos bottes de randonnée. Vous en aurez besoin pour gravir le mont Olympus, la plus haute montagne planétaire dans notre système solaire. Il fait deux fois et demie la taille de l'Everest!",
 
-            'distance' => "225 gm",
+                'distance' => "225 gm",
 
-            'durée' => "9 mois"
-        ],
-        'Europe'=>[
-            'nom' => 'Europe',
+                'durée' => "9 mois"
+            ],
+            'Europe'=>[
+                'nom' => 'Europe',
 
-            'image' => asset("/img/Europe.png"),
+                'image' => asset("/img/Europe.png"),
 
-            'description' => "La plus petite des quatre lunes galiléennes en orbite autour de Jupiter, Europe est le rêve des amoureux de  l'hiver. Sa surface glacée est parfaite pour faire un peu de patin à glace, du curling, du hockey ou tout simplement pour vous détentre dans votre confortable chalet hivernal.",
+                'description' => "La plus petite des quatre lunes galiléennes en orbite autour de Jupiter, Europe est le rêve des amoureux de  l'hiver. Sa surface glacée est parfaite pour faire un peu de patin à glace, du curling, du hockey ou tout simplement pour vous détentre dans votre confortable chalet hivernal.",
 
-            'distance' => "628 gm",
+                'distance' => "628 gm",
 
-            'durée' => "3 ans"
-        ],
-        
-        'Titan'=>[
-            'nom' => 'Titan',
+                'durée' => "3 ans"
+            ],
+            
+            'Titan'=>[
+                'nom' => 'Titan',
 
-            'image' => asset("/img/Titan.png"),
+                'image' => asset("/img/Titan.png"),
 
-            'description' => "La seule lune connue pour avoir une atmosphère dense autre que la Terre, Titan est comme une maison loin de la laison (et juste quelques centaines de degrés plus froid !). En bonus, vous pouvez contemplez des vues saisissantes des anneaux de Saturne.",
+                'description' => "La seule lune connue pour avoir une atmosphère dense autre que la Terre, Titan est comme une maison loin de la laison (et juste quelques centaines de degrés plus froid !). En bonus, vous pouvez contemplez des vues saisissantes des anneaux de Saturne.",
 
-            'distance' => "1,6 tm",
+                'distance' => "1,6 tm",
 
-            'durée' => "7 ans"
-        ],
+                'durée' => "7 ans"
+            ],
 
-    ];
-    $url = $_SERVER['REQUEST_URI'];
-    $name = explode("/",$url) ;
-    $page = $name[1];
-    if(isset($name[2]) && array_key_exists($name[2], $destinations)){
-        $planet = $name[2] ;
-    }else{
-        $planet = 'Lune';
-    }
-    $destination = $destinations[$planet];
-    $image = $destination['image'];
-    $description = $destination['description'];
-    $distance = $destination['distance'];
-    $duree = $destination['durée'];
-
-
-
+        ];
+        // recuperation de {{$planet}} depuis l'url
+        $url = $_SERVER['REQUEST_URI'];
+        $name = explode("/",$url) ;
+        $page = $name[1];
+        if(isset($name[2]) && array_key_exists($name[2], $destinations)){
+            $planet = $name[2] ;
+        }else{
+            $planet = 'Lune';
+        }
+        // creation des variables de donnée
+        $destination = $destinations[$planet];
+        $image = $destination['image'];
+        $description = $destination['description'];
+        $distance = $destination['distance'];
+        $duree = $destination['durée'];
+        //Affichage de la vue avec les données
         return view('pages.destination', [
             'planet' => $planet,
             'image' => $image,
             'description' => $description,
             'distance' => $distance,
             'duree' => $duree,    
-         ]);
+        ]);
+    }
+    public function crew(): View
+    {
+        $crew = [
+            'douglas_hurley'=>[
+                'nom' => 'Douglas Hurley',
+                'grade' => 'Commandant',
+                'image' => asset("/img/douglas_hurley.png"),
+                'description' => "Douglas Gerald Hurley est un ingénieur américain, un ancien pilote du Coprs des Marines et un ancien astronaute de la NASA. Il s'est lancé dans l'espace pour la troisième fois en tant que commandant du vaissaux Crew Dragon Demo-2."
+            ],
+            'mark_shuttleworth'=>[
+                'nom' => 'Mark Shuttleworth',
+                'grade' => 'Specialiste de mission',
+                'image' => asset("/img/mark_shuttleworth.png"),
+                'description' => "Mark Richard Shuttleworth est le fondateur et PDG de Canonical, la société derrière le système d’exploitation Ubuntu basé sur Linux. Shuttleworth est devenu le premier sud-africain à voyager dans l’espace en tant que touriste spatial."
+            ],
+            'victor_glover'=>[
+                'nom' => 'Victor Glover',
+                'grade' => 'Pilote',
+                'image' => asset("/img/victor_glover.png"),
+                'description' => "Pilote du premier vol opérationnel du SpaceX Crew Dragon à destination de la Station Spatiale Internationale. Glover est commandant dans la marine américaine, où il pilote un F/A-18. Il a été membre de l’équipage de l’Expedition 64 et a servi comme ingénieur de vol des systèmes de station."
+            ],
+            'anousheh_ansari'=>[
+                'nom' => 'Anousheh Ansari',
+                'grade' => 'Ingenieur de vol',
+                'image' => asset("/img/anousheh_ansari.png"),
+                'description' => "Anousheh Ansari est une ingénieure Irano-Américaine et cofondatrice de Prodea Systems. Ansari était la quatrième touriste de l'espace autofinancée, la première femme autofinancée à se rendre à l'ISS, et la première iranienne dans l'espace."
+            ],
+
+        ];
+        // recuperation de {{$person}} depuis l'url
+        $url = $_SERVER['REQUEST_URI'];
+        $part = explode("/",$url) ;
+        $page = $part[1];
+        if(isset($part[2]) && array_key_exists($part[2], $crew)){
+            $people= $part[2] ;
+        }else{
+            $people= 'douglas_hurley';
+        }
+        // creation des variables de donnée
+        $person = $crew[$people];
+        $nom = $person['nom'];
+        $image = $person['image'];
+        $description = $person['description'];
+        $grade = $person['grade'];
+        //Affichage de la vue avec les données
+        return view('pages.equipage', [
+            'people' => $people,
+            'nom' => $nom,
+            'image' => $image,
+            'description' => $description,
+            'grade' => $grade,
+               
+        ]);
+        
     }
 }

@@ -26,7 +26,7 @@
             <a class=' sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 ' href="/destination/Lune"><span class="font-black sm:hidden xl:inline">01 </span> DESTINATION</a>
         </li>
         <li class='hover:border-r-white hover:border-r-4 sm:border-none'>
-            <a class='sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300' href="/equipage"><span class="font-black sm:hidden xl:inline">02 </span> EQUIPAGE</a>
+            <a class='sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300' href="/equipage/douglas_hurley"><span class="font-black sm:hidden xl:inline">02 </span> EQUIPAGE</a>
         </li>
         <li class='hover:border-r-white hover:border-r-4 sm:border-none'>
             <a class='sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300' href="/technologie"><span class="font-black sm:hidden xl:inline">03 </span> TECHNOLOGIE</a>
