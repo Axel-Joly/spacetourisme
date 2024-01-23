@@ -23,8 +23,8 @@ export default {
     },
     extend: {
       colors: {
-        'light-blue': '#D0D6F9',
-        'dark-blue': '#0B0D17',
+        'lightB': '#D0D6F9',
+        'darkB': '#0B0D17',
       },
     },
     fontFamily: {

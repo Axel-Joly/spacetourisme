@@ -22,13 +22,13 @@ Route::get('/welcome', function () {
 
 
 
-Route::get('/destination/{name}',[PageController::class, 'destination']);
+Route::get('/destination/{name}',[PageController::class,'destination']);
 
 
 
-Route::get('/equipage/{name}',[PageController::class, 'crew']);
+Route::get('/equipage/{name}',[PageController::class,'crew']);
 
 
-Route::get('/technologie', function () {
-    return view('pages.technologie');
-});
+Route::get('/technologie/{name}',[PageController::class,'technologie']);
+
+

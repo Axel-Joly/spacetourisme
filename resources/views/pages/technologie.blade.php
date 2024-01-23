@@ -3,27 +3,49 @@
 
 @section('content')
 
-<body class='bg-tech text-white bg-cover bg-no-repeat flex flex-col min-h-screen'>
+<body class='bg-tech text-white bg-cover bg-no-repeat bg-center flex flex-col min-h-screen'>
 @include('components.nav')
-<main class='grid md:grid-cols-3 pt-32 pb-24 '>
-    <div class=" md:col-span-2 flex flex-col items-center justify-center lg:pt-32 lg:pl-36">
-        <div class="text-center lg:text-left" >
-        <h2 class="barlow sm:text-2xl xl:text-3xl sm:tracking-widest mb-10">DONC VOUS VOULEZ VOYAGER DANS</h2>
-        <h1 class="bellefair text-7xl sm:text-[100px] xl:text-[150px] mb-10">TECH</h1>
-        <p class="barlow md:text-[16px] lg:text-[18px] tracking-widest md:mx-10  lg:mx-0 lg:mr-36">Soyons objectif; si vous voulez aller dans l'espace, vous pouvez aller véritablement dans le véritable espace et non juste planer sur le bord de celui-ci. Eh bien, asseyez-vous parce que nous allons vous donner une expérience vraiment extraordinaire!
-        </p>
+<main class='flex flex-col sm:justify-start' >
+    
+    <div class="mt-14 lg:mt-32 sm:ml-8 lg:ml-20 flex flex-row justify-center sm:justify-start items-end " >
+        <p class='font-barlow tracking-widest text-[14px] sm:text-2xl'><span class='text-gray-600 font-black whitespace-pre'>03 </span> LANCEMENT SPACIALE 101</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 flex flex-col justify-center sm:justify-start lg:pb-32 lg:pl-20 lg:p-0 lg:ml-10 mt-20 lg:mt-0">
+
+        <div class='lg:order-2 lg:flex flex-col   '>
+            <div class="flex  lg:justify-end items-end lg:items-center justify-center w-full lg:w-auto max-h-[310px] lg:max-h-none overflow-hidden">
+                <img class=" w-full lg:w-auto object-fill lg:object-none overscroll-none mb-[-15%] lg:mb-0 " src="{{ $image }}"/>
+            </div>
         </div>
-    </div>
-    <div class="grid mt-20 lg:mt-40 xl:pr-20">
-        <div></div>
-        <div class=" flex items-start justify-center " >
-            <div class="xl:mt-24 flex rounded-full bg-white text-black size-64 justify-center items-center ">
-                <a class="titre4" href="">EXPLORER</a>
+        
+
+        <div class=' lg:order-1 pt-5 text-center lg:text-left flex flex-col lg:flex-row mt-10 lg:mr-10'>
+            <div class=' flex flex-col lg:flex-row  lg:mr-10 '>
+                <ul class='flex lg:flex-col flex-row  justify-evenly'>
+                    @if($nom != 'LE LANCEUR')
+                    <li class='border border-solid border-white/40 hover:border-white rounded-full size-20 text-center flex justify-center items-center'><a href="/technologie/lanceur">1</a></li>
+                    @else
+                    <li class='border border-solid border-white/40 bg-white text-darkB hover:border-white rounded-full size-20 text-center flex justify-center items-center'><a href="/technologie/lanceur">1</a></li>
+                    @endif
+                    <li class='border border-solid border-white/40 hover:border-white rounded-full size-20 text-center flex justify-center items-center'><a href="/technologie/spatioport">2</a></li>
+                    <li class='border border-solid border-white/40 hover:border-white rounded-full size-20 text-center flex justify-center items-center'><a href="/technologie/capsule">3</a></li>
+                </ul>
             </div>
-            <div class="xl:mt-24 hover:scale-150 duration-300 size-64 rounded-full bg-white/10 absolute scale-100">
-            </div>
-        </div>   
+            <div>
+                <div>
+                    <h2 class='font-barlowC uppercase text-xl text-gray-500 mt-10'>LA TERMINOLOGIE...</h2>
+                    <h1 class=' text-5xl lg:text-[56px]  whitespace-nowrap font-bellefair uppercase'>{{$nom}}</h1>
+                </div>
+                <div class='pb-10 text-[20px] font-barlowC font-thin tracking-widest mx-10 md:mx-20 lg:mx-0 text-center lg:text-left text-lightB '>
+                    <p >{{$description}}</p>
+                </div>
+            </div>   
+        </div>
+
     </div>
+
+    
 </main>
 
 @stop
