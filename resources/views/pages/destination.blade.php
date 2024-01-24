@@ -2,11 +2,11 @@
 
 @section('content')
 
-<body class='bg-desti text-white bg-cover bg-center bg-no-repeat flex flex-col min-h-screen'>
+<body class='bg-desti text-white bg-cover bg-center bg-no-repeat flex flex-col min-h-screen m-0 p-0 w-full'>
 @include('components.nav')
 
 
-<main class='grid lg:grid-cols-2 lg:grid-row-2 my-10 sm:my-20 mx-[10%] '>
+<main class='sm:grid lg:grid-cols-2 lg:grid-row-2 my-10 sm:my-20 mx-[10%] '>
 
     <div class=" flex justify-center sm:justify-start lg:pb-32 sm:ml-[-8%] lg:ml-0">
         <div class="" >

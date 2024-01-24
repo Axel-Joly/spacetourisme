@@ -33,6 +33,10 @@ export default {
       'barlowC':["Barlow Condensed"],
     },
     screens: {
+
+      'xs': '300px',
+    // => @media (min-width: 300px) { ... }
+
     'sm': '540px',
     // => @media (min-width: 540px) { ... }
 

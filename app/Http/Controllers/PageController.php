@@ -154,7 +154,7 @@ class PageController extends Controller
                 'image' => asset("/img/spatioport.png"),
             ],
             'capsule'=>[
-                'nom' => 'La capsule',
+                'nom' => 'La capsule spatiale',
                 'description' => "Une capsule spatiale est un engin spatial habitable qui utilise une capsule à corps émoussé pour rentrer dans l’atmosphère terrestre sans ailes. Notre capsule est l’endroit où vous passerez votre temps pendant le vol. Il comprend une salle de gym, un cinéma et de nombreuses autres activités pour vous divertir",
                 'image' => asset("/img/capsule.png"),
             ],
