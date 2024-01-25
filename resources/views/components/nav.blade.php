@@ -1,5 +1,5 @@
 <?php
-// recuperation de {{$person}} depuis l'url
+// recuperation de {{$page}} depuis l'url
 $url = $_SERVER['REQUEST_URI'];
 $part = explode("/",$url) ;
 $page = $part[1];
