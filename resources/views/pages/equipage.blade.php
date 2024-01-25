@@ -12,7 +12,7 @@
     <div class='order-2 '></div>
     <div class='flex flex-col mt-10 sm:mt-5 order-3 sm:order-4'>
         <div class="flex lg:justify-end justify-center align-end  border-solid sm:border-b-0 border-b border-lightB/50 ">
-            <img class='max-h-[225px] sm:max-h-none' src="{{ $image }}"/>
+            <img class='max-h-[225px] sm:max-h-none' src="{{ $image }}" alt='{{ $nom }}'/>
         </div>
     </div>
     <div class=" flex flex-col  lg:pb-32 sm:ml-[-8%] lg:ml-0 order-4   sm:order-3 ">

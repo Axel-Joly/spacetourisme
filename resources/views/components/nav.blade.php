@@ -1,3 +1,11 @@
+<?php
+// recuperation de {{$person}} depuis l'url
+$url = $_SERVER['REQUEST_URI'];
+$part = explode("/",$url) ;
+$page = $part[1];
+?>
+
+
 <nav class="lg:mt-8 flex flex-row justify-between overflow-hidden w-full lg:justify-around m-0 p-0" >
     
     <ul class='mt-5 z-40 sm:mt-0 justify-between sm:justify-evenly content-center items-center flex flex-row w-[100%] sm:gap-10 barlow'>
@@ -19,17 +27,41 @@
             
     </ul>
     <ul data-ui="" id="menu" class='absolute left-[50%] z-[-10] sm:z-10 data-checked:z-30 opacity-0 sm:opacity-100 data-checked:opacity-100  font-barlowC sm:static h-[100%] w-[65%] pt-32 sm:pt-0 gap-10  sm:h-20 pl-20 lg:pl-32 sm:pr-20  backdrop-blur-lg  bg-lightB/10  sm:justify-evenly  sm:items-center flex flex-col sm:flex-row  sm:gap-6 lg:gap-16 tracking-[2.7px]'>
+        @if($page != "")
         <li class='hover:border-r-white hover:border-r-4 sm:border-none'>
-            <a class='sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300   ' href="/" ><span class=" font-black  sm:hidden xl:inline">00 </span>  ACCEUIL</a>
+            <a class='sm:hover:underline underline-offset-[30px] decoration-4 sm:decoration-gray-300' href="/" ><span class=" font-black  sm:hidden xl:inline">00 </span> ACCEUIL</a>
         </li>
+        @else
+        <li class='hover:border-r-white hover:border-r-4 sm:border-none'>
+            <a class='sm:underline underline-offset-[30px] decoration-4 sm:decoration-lightB' href="/" ><span class=" font-black  sm:hidden xl:inline">00 </span> ACCEUIL</a>
+        </li>
+        @endif
+        @if($page != "destination")
         <li class='hover:border-r-white hover:border-r-4 sm:border-none' >
             <a class=' sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 ' href="/destination/Lune"><span class="font-black sm:hidden xl:inline">01 </span> DESTINATION</a>
         </li>
+        @else
+        <li class='hover:border-r-white hover:border-r-4 sm:border-none' >
+            <a class='sm:underline underline-offset-[30px] decoration-4 sm:decoration-lightB' href="/destination/Lune"><span class="font-black sm:hidden xl:inline">01 </span> DESTINATION</a>
+        </li>
+        @endif
+        @if($page != "equipage")
         <li class='hover:border-r-white hover:border-r-4 sm:border-none'>
             <a class='sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300' href="/equipage/douglas_hurley"><span class="font-black sm:hidden xl:inline">02 </span> EQUIPAGE</a>
         </li>
+        @else
+        <li class='hover:border-r-white hover:border-r-4 sm:border-none'>
+            <a class='sm:underline underline-offset-[30px] decoration-4  sm:decoration-lightB' href="/equipage/douglas_hurley"><span class="font-black sm:hidden xl:inline">02 </span> EQUIPAGE</a>
+        </li>
+        @endif
+        @if($page != "technologie")
         <li class='hover:border-r-white hover:border-r-4 sm:border-none'>
             <a class='sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300' href="/technologie/lanceur"><span class="font-black sm:hidden xl:inline">03 </span> TECHNOLOGIE</a>
         </li>
+        @else
+        <li class='hover:border-r-white hover:border-r-4 sm:border-none'>
+            <a class='sm:underline underline-offset-[30px] decoration-4  sm:decoration-lightB' href="/technologie/lanceur"><span class="font-black sm:hidden xl:inline">03 </span> TECHNOLOGIE</a>
+        </li>
+        @endif
     </ul>
 </nav>

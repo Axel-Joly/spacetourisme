@@ -13,25 +13,33 @@
 
     <div class="grid lg:grid-cols-2 flex flex-col justify-center sm:justify-start lg:pb-32 lg:pl-20 lg:p-0 lg:ml-10 mt-10 sm:mt-20 lg:mt-0">
 
-        <div class='lg:order-2 lg:flex flex-col   '>
+        <div class='lg:order-2 lg:flex flex-col'>
             <div class="flex lg:justify-end items-end lg:items-center justify-center w-full lg:w-auto max-h-[170px] sm:max-h-[310px] lg:max-h-none overflow-hidden">
-                <img class=" w-full lg:w-auto object-fill lg:object-none overscroll-none mb-[-15%] lg:mb-0 " src="{{ $image }}"/>
+                <img class=" w-full lg:w-auto object-fill lg:object-none overscroll-none mb-[-15%] lg:mb-0 " src="{{ $image }}" alt="{{$nom}}"/>
             </div>
         </div>
         
 
         <div class=' lg:order-1 pt-5 text-center lg:text-left flex flex-col lg:flex-row mt-10 lg:mr-10'>
-            <div class=' flex flex-col lg:flex-row  lg:mr-10 '>
-                <ul class='flex lg:flex-col flex-row  justify-evenly'>
-                    @if($nom != 'LE LANCEUR')
-                    <li class='border border-solid border-white/40 hover:border-white rounded-full size-20 text-center flex justify-center items-center'><a href="/technologie/lanceur">1</a></li>
+            <nav class=' flex flex-col lg:flex-row  lg:mr-10 '>
+                <ul class='flex lg:flex-col flex-row justify-evenly'>
+                    @if($nom != 'Le lanceur')
+                    <li><a class=' text-center flex justify-center items-center border border-solid border-white/40 hover:border-white rounded-full size-20' href="/technologie/lanceur">1</a></li>
                     @else
-                    <li class='border border-solid border-white/40 bg-white text-darkB hover:border-white rounded-full size-20 text-center flex justify-center items-center'><a href="/technologie/lanceur">1</a></li>
+                    <li><a class='border border-solid border-white/40 bg-white text-darkB border-white bg-white rounded-full size-20 text-center flex justify-center items-center' href="/technologie/lanceur">1</a></li>
                     @endif
-                    <li class='border border-solid border-white/40 hover:border-white rounded-full size-20 text-center flex justify-center items-center'><a href="/technologie/spatioport">2</a></li>
-                    <li class='border border-solid border-white/40 hover:border-white rounded-full size-20 text-center flex justify-center items-center'><a href="/technologie/capsule">3</a></li>
+                    @if($nom != 'Le spatioport')
+                    <li><a class='border border-solid border-white/40 hover:border-white rounded-full size-20 text-center flex justify-center items-center' href="/technologie/spatioport">2</a></li>
+                    @else
+                    <li><a class='border border-solid border-white/40 border-white bg-white text-darkB rounded-full size-20 text-center flex justify-center items-center' href="/technologie/spatioport">2</a></li>
+                    @endif
+                    @if($nom != 'La capsule spatiale')
+                    <li><a class='border border-solid border-white/40 hover:border-white  rounded-full size-20 text-center flex justify-center items-center' href="/technologie/capsule">3</a></li>
+                    @else
+                    <li><a class='border border-solid border-white/40 border-white bg-white text-darkB rounded-full size-20 text-center flex justify-center items-center' href="/technologie/capsule">3</a></li>
+                    @endif
                 </ul>
-            </div>
+            </nav>
             <div>
                 <div>
                     <h2 class='font-barlowC uppercase text-xl text-gray-500 mt-10'>LA TERMINOLOGIE...</h2>

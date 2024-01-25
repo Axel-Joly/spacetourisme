@@ -17,7 +17,7 @@
     <div></div>
 
     <div class="flex items-center justify-around lg:ml-[10%] m-[15%]">
-         <img  src="{{ $image }}"/>
+         <img  src="{{ $image }}" alt='{{$planet}}'/>
     </div>
 
     
