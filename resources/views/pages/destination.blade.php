@@ -62,11 +62,11 @@
         <div class='border-t border-solid items-center sm:items-start border-white flex flex-col sm:flex-row py-5'>
             <div class='flex flex-col sm:justify-start my-5 sm:my-0 w-[50%]'>
                 <p class='font-barlow tracking-widest uppercase'>Distance</p>
-                <p class='font-bellefair text-[36px]'>{{$distance}}</p>
+                <p class='font-bellefair text-[36px]'>{{trans("destinations.$planet.distance")}}</p>
             </div>
             <div class='flex flex-col justify-start w-[50%] '>
                 <p class='font-barlow tracking-widest uppercase'>Durée</p>
-                <p class='font-bellefair text-4xl'>{{$duree}}</p>
+                <p class='font-bellefair text-4xl'>{{trans("destinations.$planet.durée")}}</p>
             </div>
         </div>
 

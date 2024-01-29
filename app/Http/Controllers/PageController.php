@@ -68,12 +68,12 @@ class PageController extends Controller
         if(isset($name[2]) && array_key_exists($name[2], $destinations)){
             $planet = $name[2] ;
         }else{
-            $planet = 'Lune';
+            $planet = trans('destinations'.'Lune');
         }
         // creation des variables de donnée
-        $destination = $destinations[$planet];
-        $image = $destination['image'];
-        $description = $destination['description'];
+        $destination =  trans('destinations'.$planet);
+        $image = trans('destinations'.$destination['image']);
+        $description =  trans($destination['description']);
         $distance = $destination['distance'];
         $duree = $destination['durée'];
         //Affichage de la vue avec les données
@@ -124,7 +124,7 @@ class PageController extends Controller
             $people= 'douglas_hurley';
         }
         // creation des variables de donnée
-        $person = $crew[$people];
+        $person = trans('crew.' . $people);
         $nom = $person['nom'];
         $image = $person['image'];
         $description = $person['description'];
