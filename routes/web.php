@@ -20,6 +20,9 @@ Route::get('/welcome', function () {
     return view('welcome'); 
 });
 
+Route::get('/toto', function () {
+    echo "toto";
+});
 
 
 Route::get('/destination/{name}',[PageController::class,'destination']);

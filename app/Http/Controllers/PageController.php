@@ -71,9 +71,9 @@ class PageController extends Controller
             $planet = trans('destinations'.'Lune');
         }
         // creation des variables de donnée
-        $destination =  trans('destinations'.$planet);
-        $image = trans('destinations'.$destination['image']);
-        $description =  trans($destination['description']);
+        $destination =  $planet;
+        $image = $destination['image'];
+        $description = ['description'];
         $distance = $destination['distance'];
         $duree = $destination['durée'];
         //Affichage de la vue avec les données
@@ -124,7 +124,7 @@ class PageController extends Controller
             $people= 'douglas_hurley';
         }
         // creation des variables de donnée
-        $person = trans('crew.' . $people);
+        $person = $people;
         $nom = $person['nom'];
         $image = $person['image'];
         $description = $person['description'];
