@@ -82,12 +82,15 @@ return [
     | to any of the locales which will be supported by the application.
     |
     */
-
-    'locale' => [
-        'en',
-        'fr',
+    'locales' => [
+        'en', // Anglais
+        'fr', // Français
         // Ajoutez d'autres langues au besoin
     ],
+
+    'locale' => 'fr',
+        
+   
 
     /*
     |--------------------------------------------------------------------------

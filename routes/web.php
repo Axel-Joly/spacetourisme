@@ -12,26 +12,36 @@ use App\Http\Controllers\PageController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
+// language selection
+Route::get('language/{locale}', function ($locale) {
+    app()->setLocale($locale);
+    session()->put('locale', $locale);
+    return redirect()->back();
+});
+// home page
 Route::get('/', function () {
     return view('pages.index'); 
-});
-Route::get('/welcome', function () {
-    return view('welcome'); 
-});
+})->name('home');
 
-Route::get('/toto', function () {
-    echo "toto";
-});
 
+// destination
+Route::get('/destination', function(){
+    return redirect('/destination/'.'moon');
+});
 
 Route::get('/destination/{name}',[PageController::class,'destination']);
+// crew
+Route::get('/crew', function(){
+    return redirect('/crew/'.'douglas_hurley');
+});
 
+Route::get('/crew/{name}',[PageController::class,'crew']);
+// technology
 
+Route::get('/technology', function(){
+    return redirect('/technology/'.'launcher');
+});
 
-Route::get('/equipage/{name}',[PageController::class,'crew']);
-
-
-Route::get('/technologie/{name}',[PageController::class,'technologie']);
+Route::get('/technology/{name}',[PageController::class,'technology']);
 
 

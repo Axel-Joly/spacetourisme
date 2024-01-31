@@ -1,5 +1,7 @@
 @extends('layouts.default')
-
+@section('title', $name)
+@section('description', $description)
+@section('image' , $image)
 @section('content')
 
 <body class='bg-desti text-white bg-cover bg-center bg-no-repeat flex flex-col min-h-screen m-0 p-0 w-full'>
@@ -10,14 +12,14 @@
 
     <div class=" flex justify-center sm:justify-start lg:pb-32 sm:ml-[-8%] lg:ml-0">
         <div class="" >
-            <p class='font-barlow tracking-widest text-[14px] sm:text-2xl'><span class='text-gray-600 font-black whitespace-pre'>01 </span>    CHOISISSEZ VOTRE DESTINATION</p>
+            <p class='font-barlow tracking-widest text-[14px] sm:text-2xl uppercase'><span class='text-gray-600 font-black whitespace-pre '>01 </span> @lang("choose your destination")</p>
         </div>
     </div>
 
     <div></div>
 
     <div class="flex items-center justify-around lg:ml-[10%] m-[15%]">
-         <img  src="{{ $image }}" alt='{{$planet}}'/>
+         <img  src="{{$image}}" alt='{{$planet}}'/>
     </div>
 
     
@@ -25,31 +27,15 @@
 
         <div class='pt-10'>
             <ul class='flex flex-row justify-evenly lg:justify-start lg:gap-10 uppercase font-barlow tracking-widest underline-offset-[10px] '>
-                @if($planet != 'Lune')
-                <li class='hover:underline decoration-4 decoration-gray-600'><a href="/destination/Lune">Lune</a></li>
-                @else
-                <li class='underline decoration-4 decoration-white'><a href="/destination/Lune">Lune</a></li>
-                @endif
-                @if($planet != 'Mars')
-                <li class='hover:underline decoration-4 decoration-gray-600'><a href="/destination/Mars">Mars</a></li>
-                @else
-                <li class='underline decoration-4 decoration-white'><a href="/destination/Mars">Mars</a></li>
-                @endif
-                @if($planet != 'Europe')
-                <li class='hover:underline decoration-4 decoration-gray-600'><a href="/destination/Europe">Europe</a></li>
-                @else
-                <li class='underline decoration-4 decoration-white'><a href="/destination/Europe">Europe</a></li>
-                @endif
-                @if($planet != 'Titan')
-                <li class='hover:underline decoration-4 decoration-gray-600'><a href="/destination/Titan">Titan</a></li>
-                @else
-                <li class='underline decoration-4 decoration-white'><a href="/destination/Titan">Titan</a></li>
-                @endif
+                <li class="{{ $planet != __('moon') ? '' : 'underline decoration-4 decoration-white' }} hover:underline decoration-4 decoration-gray-600"><a href="/destination/moon">@Lang('moon')</a></li>
+                <li class="{{ $planet != __('mars') ? '' : 'underline decoration-4 decoration-white' }} hover:underline decoration-4 decoration-gray-600"><a href="/destination/mars">@Lang('mars')</a></li>
+                <li class="{{ $planet != __('europa') ? '' : 'underline decoration-4 decoration-white' }} hover:underline decoration-4 decoration-gray-600"><a href="/destination/europa">@Lang('europa')</a></li>
+                <li class="{{ $planet != __('titan') ? '' : 'underline decoration-4 decoration-white' }} hover:underline decoration-4 decoration-gray-600"><a href="/destination/titan">@Lang('titan')</a></li>
             </ul>
         </div>
 
         <div class='pt-5'>
-            <h1 class='text-6xl sm:text-8xl md:text-9xl font-bellefair uppercase'>{{$planet}}  </h1>
+            <h1 class='text-6xl sm:text-8xl md:text-9xl font-bellefair uppercase'>{{$name}}  </h1>
         </div>
 
         <div class='pb-10 text-[18px] font-barlow font-thin tracking-widest h-[50%]'>
@@ -61,13 +47,13 @@
 
         <div class='border-t border-solid items-center sm:items-start border-white flex flex-col sm:flex-row py-5'>
             <div class='flex flex-col sm:justify-start my-5 sm:my-0 w-[50%]'>
-                <p class='font-barlow tracking-widest uppercase'>Distance</p>
-                <p class='font-bellefair text-[36px]'>{{$distance}}</p>
-                {{$planet}}
+                <p class='font-barlow tracking-widest uppercase'>@lang('Distance')</p>
+                <p class='font-bellefair text-[36px]'>@lang($distance)</p>
+                
             </div>
             <div class='flex flex-col justify-start w-[50%] '>
-                <p class='font-barlow tracking-widest uppercase'>Durée</p>
-                <p class='font-bellefair text-4xl'>{{$durée}}</p>
+                <p class='font-barlow tracking-widest uppercase'>@lang('Duration')</p>
+                <p class='font-bellefair text-4xl'>@lang(':duration',['duration' => $duration])</p>
             </div>
         </div>
 
