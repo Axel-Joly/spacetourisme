@@ -62,11 +62,13 @@ class PageController extends Controller
 
         ];
         // recuperation de {{$planet}} depuis l'url
-        $url = $_SERVER['REQUEST_URI'];
+        
+        $url = url()->current();
         $location = explode("/",$url) ;
-        $page = $location[1];
-        if(isset($location[2]) && array_key_exists($location[2], $destinations)){
-            $planet = $location[2] ;
+        // print_r($location);
+        $page = $location[3];
+        if(isset($location[4]) && array_key_exists($location[4], $destinations)){
+            $planet = $location[4] ;
         }else{
             abort(404);
         }
@@ -117,11 +119,11 @@ class PageController extends Controller
 
         ];
         // recuperation de {{$person}} depuis l'url
-        $url = $_SERVER['REQUEST_URI'];
+        $url = url()->current();
         $part = explode("/",$url) ;
-        $page = $part[1];
-        if(isset($part[2]) && array_key_exists($part[2], $crew)){
-            $people= $part[2] ;
+        $page = $part[3];
+        if(isset($part[4]) && array_key_exists($part[4], $crew)){
+            $people= $part[4] ;
         }else{
             abort(404);
         }
@@ -163,11 +165,11 @@ class PageController extends Controller
         ];
 
         // recuperation de {{$person}} depuis l'url
-        $url = $_SERVER['REQUEST_URI'];
+        $url = url()->current();
         $part = explode("/",$url) ;
-        $page = $part[1];
-        if(isset($part[2]) && array_key_exists($part[2], $tech)){
-            $techno = $part[2] ;
+        $page = $part[3];
+        if(isset($part[4]) && array_key_exists($part[4], $tech)){
+            $techno = $part[4] ;
         }else{
             abort(404);
         }

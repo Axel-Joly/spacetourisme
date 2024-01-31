@@ -1,9 +1,10 @@
 <?php
-use Illuminate\Support\Facades\URL;
+
 // recuperation de {{$page}} depuis l'url
-$url = $_SERVER['REQUEST_URI'];
+$url = url()->current();
 $part = explode("/",$url) ;
-$page = $part[1];
+// print_r($part) ;
+isset($part[3]) ? $page = $part[3] : $page="";
 ?>
 
 
