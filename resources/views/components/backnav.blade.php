@@ -4,7 +4,7 @@
 $url = url()->current();
 $part = explode("/",$url) ;
 // print_r($part) ;
-isset($part[3]) ? $page = $part[3] : $page="";
+isset($part[3]) ? $page = $part[3] : $page="/backspace";
 ?>
 
 
@@ -30,20 +30,20 @@ isset($part[3]) ? $page = $part[3] : $page="";
     </ul>
     <ul data-ui="" id="menu" class='absolute left-[35%] z-[-10] sm:z-10 data-checked:z-30 opacity-0 sm:opacity-100 data-checked:opacity-100  font-barlowC sm:static h-full w-[65%] pt-32 sm:pt-0 gap-10  sm:h-20 pl-20 lg:pl-32 sm:pr-20 lg:pr-5  backdrop-blur-lg  bg-lightB/10  sm:justify-evenly  sm:items-center flex flex-col sm:flex-row sm:gap-6 lg:gap-16 tracking-[2.7px]'>
         
-        <li class="{{ $page != '' ? '' : 'border-r-white border-r-4' }} hover:border-r-lightB hover:border-r-4 sm:border-none">
-            <a class="{{ $page != '' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex  sm:hover:underline underline-offset-[30px] decoration-4 sm:decoration-gray-300 uppercase " href="/" ><span class=" font-black sm:hidden xl:inline whitespace-pre">00 </span> @lang('home')</a>
+        <li class="{{ $page != '/backspace' ? '' : 'border-r-white border-r-4' }} hover:border-r-lightB hover:border-r-4 sm:border-none">
+            <a class="{{ $page != '/backspace' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex  sm:hover:underline underline-offset-[30px] decoration-4 sm:decoration-gray-300 uppercase " href="/backspace" ><span class=" font-black sm:hidden xl:inline whitespace-pre">X0 </span> @lang('home')</a>
         </li>
 
-        <li class="{{ $page != 'destination' ? '' : 'border-r-white border-r-4' }} hover:border-r-white hover:border-r-4 sm:border-none">
-            <a class="{{ $page != 'destination' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase " href="/destination"><span class="font-black sm:hidden xl:inline whitespace-pre">01 </span> @lang('destination')</a>
+        <li class="{{ $page != '/backspace/destination' ? '' : 'border-r-white border-r-4' }} hover:border-r-white hover:border-r-4 sm:border-none">
+            <a class="{{ $page != '/backspace/destination' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase " href="/backspace/destination"><span class="font-black sm:hidden xl:inline whitespace-pre">X1 </span> @lang('destination')</a>
         </li>
        
-        <li class="{{ $page != 'crew' ? '' : 'border-r-white border-r-4' }} hover:border-r-white hover:border-r-4 sm:border-none">
-            <a class="{{ $page != 'crew' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase" href="/crew"><span class="font-black sm:hidden xl:inline whitespace-pre">02 </span> @lang('crew')</a>
+        <li class="{{ $page != '/backspace/crew' ? '' : 'border-r-white border-r-4' }} hover:border-r-white hover:border-r-4 sm:border-none">
+            <a class="{{ $page != '/backspace/crew' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase" href="/backspace/crew"><span class="font-black sm:hidden xl:inline whitespace-pre">X2 </span> @lang('crew')</a>
         </li>
         
-        <li class="{{ $page != 'technology' ? '' : 'border-r-white border-r-4' }} hover:border-r-white hover:border-r-4 sm:border-none">
-            <a class="{{ $page != 'technology' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase" href="/technology"><span class="font-black sm:hidden xl:inline whitespace-pre">03 </span> @lang('technology')</a>
+        <li class="{{ $page != '/backspace/technology' ? '' : 'border-r-white border-r-4' }} hover:border-r-white hover:border-r-4 sm:border-none">
+            <a class="{{ $page != '/backspace/technology' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase" href="/backspace/technology"><span class="font-black sm:hidden xl:inline whitespace-pre">X3 </span> @lang('technology')</a>
         </li>
         <li>
             <div>

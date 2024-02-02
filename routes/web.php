@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\BackController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -43,5 +44,11 @@ Route::get('/technology', function(){
 });
 
 Route::get('/technology/{name}',[PageController::class,'technology']);
+
+//--------------------------backspace----------------------------------
+// -------------------------_________----------------------------------
+Route::get('/login',[BackController::class,'login']);
+
+Route::get('/backspace',[BackController::class,'backspace']);
 
 

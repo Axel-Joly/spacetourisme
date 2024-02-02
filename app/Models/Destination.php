@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Destination extends Model
 {
     use HasFactory;
+
+    protected $data = [
+        'name',
+        'image',
+        'description',
+        'distance',
+        'duration',
+    ];
+
 }
