@@ -17,4 +17,9 @@ class Destination extends Model
         'duration',
     ];
 
+    
+
+    
+    
+
 }
