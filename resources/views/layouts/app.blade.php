@@ -15,12 +15,20 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
+<<<<<<< HEAD
         <div class="min-h-screen bg-gray-100">
+=======
+        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+>>>>>>> 48f8a0dbbafd58ee5d797c373d5eb5e72257f47e
             @include('layouts.navigation')
 
             <!-- Page Heading -->
             @if (isset($header))
+<<<<<<< HEAD
                 <header class="bg-white shadow">
+=======
+                <header class="bg-white dark:bg-gray-800 shadow">
+>>>>>>> 48f8a0dbbafd58ee5d797c373d5eb5e72257f47e
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
                     </div>
