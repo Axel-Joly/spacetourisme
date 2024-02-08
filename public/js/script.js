@@ -1,7 +1,7 @@
 let burger = document.querySelector('#burger');
 let lines = document.querySelectorAll('.lines');
 let menu = document.querySelector('#menu')
-console.log(lines);
+
 burger.addEventListener('click', (event) =>{
     if(lines[0].attributes[0].value != "checked"){
         lines[0].attributes[0].value = "checked";

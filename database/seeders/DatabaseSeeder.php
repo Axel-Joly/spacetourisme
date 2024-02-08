@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
             DestinationsFrSeeder::class,
             CrewsFrSeeder::class,
             TechnologiesFrSeeder::class,
+            UsersSeeder::class,
         ]);
 
         

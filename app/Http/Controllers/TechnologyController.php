@@ -12,7 +12,12 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        //
+        $list = DB::table('technologies')->get();
+        
+        return view('back.technology',[
+            'list' => $list,
+            
+        ]);
     }
 
     /**
@@ -47,9 +52,9 @@ class TechnologyController extends Controller
          $name= implode(" ",$newPath);
         // verifications
          if( app()->getLocale() == 'en'){
-              $technologies = DB::table('technologies')->where('name',$name)->first();
+              $technologies = DB::table('technologies')->where('name',__($name))->first();
          }else if(app()->getLocale() == 'fr'){
-             $technologies = DB::table('technologies_fr')->where('name',$name)->first();
+             $technologies = DB::table('technologies_fr')->where('name',__($name))->first();
          }
          if(!isset($location[4]) && isset($name, $technologies)){
             abort(404);    

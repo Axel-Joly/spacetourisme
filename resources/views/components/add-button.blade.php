@@ -1,0 +1,1 @@
+<input class='font-barlowC w-20 bg-darkB/40 rounded border uppercase' type='button' value=@lang('add')>

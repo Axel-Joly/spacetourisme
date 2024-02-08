@@ -15,20 +15,13 @@ class DestinationsController extends Controller
      */
     public function index()
     {
-        $destinations = DB::table('destinations')->where('id',1)->first();
-        $name = $destinations->name;
-        $image = $destinations->image;
-        $description = $destinations->description;
-        $distance = $destinations->distance;
-        $duration = $destinations->duration;
-        return view('back.destinations',[
-            'name' => $name,
-            'image' => $image,
-            'description' => $description,
-            'distance' => $distance,
-            'duration' => $duration,
-    
-    ]);
+        $list = DB::table('destinations')->get();
+
+        return view('back.destination',[
+            'list' => $list,
+            
+        ]);
+
     }
 
     /**
@@ -63,20 +56,23 @@ class DestinationsController extends Controller
         $name= implode(" ",$newPath);
        // verifications
         if( app()->getLocale() == 'en'){
-             $destinations = DB::table('destinations')->where('name',$name)->first();
+            
+             $destination = DB::table('destinations')->where('name',__($name))->first();
+             
         }else if(app()->getLocale() == 'fr'){
-            $destinations = DB::table('destinations_fr')->where('name',$name)->first();
+            
+            $destination = DB::table('destinations_fr')->where('name',__($name))->first();
         }
-        if(!isset($location[4]) && isset($name, $destinations)){
+        if(!isset($location[4]) && isset($name, $destination)){
            abort(404);    
         }
         // creation des variables de donnée
         
-        $name = $destinations->name;
-        $image = $destinations->image;
-        $description = $destinations->description;
-        $distance = $destinations->distance;
-        $duration = $destinations->duration;
+        $name = $destination->name;
+        $image = $destination->image;
+        $description = $destination->description;
+        $distance = $destination->distance;
+        $duration = $destination->duration;
         return view('pages.destination', [
             'name' => $name,
             'image' => $image,

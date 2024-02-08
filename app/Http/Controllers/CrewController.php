@@ -13,7 +13,13 @@ class CrewController extends Controller
      */
     public function index()
     {
-        //
+        $list = DB::table('crews')->get();
+        
+        return view('back.crew',[
+            'list' => $list,
+            
+        ]);
+
     }
 
     /**
@@ -48,9 +54,9 @@ class CrewController extends Controller
         $name= implode(" ",$newPath);
        // verifications
        if(app()->getLocale() == 'en'){
-            $crews = DB::table('crews')->where('name',$name)->first();
+            $crews = DB::table('crews')->where('name',__($name))->first();
         }else if(app()->getLocale() == 'fr'){
-            $crews = DB::table('crews_fr')->where('name',$name)->first();
+            $crews = DB::table('crews_fr')->where('name',__($name))->first();
         }
         if(!isset($location[4]) && isset($name, $crews)){
              abort(404);    
@@ -61,7 +67,7 @@ class CrewController extends Controller
         $image = $crews->image;
         $description = $crews->description;
         $grade = $crews->grade;
-
+    
         return view('pages.crew', [
             'name' => $name,
             'image' => $image,

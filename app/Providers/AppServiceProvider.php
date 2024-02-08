@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
         Route::resourceVerbs([
             'technology'=>'technologie',
             'crew' => 'equipage',
-            'moon'=>'lune'
+            'moon'=>'lune',
         ]);
     }
 }
