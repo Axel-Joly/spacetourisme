@@ -9,7 +9,7 @@
 <main class='flex flex-col sm:justify-start' >
     
     <div class="mt-14 lg:mt-32 sm:ml-8 lg:ml-20 flex flex-row justify-center sm:justify-start items-end " >
-        <p class='font-barlow tracking-widest text-[14px] sm:text-2xl'><span class='text-gray-600 font-black whitespace-pre'>03 </span> LANCEMENT SPACIALE 101</p>
+        <p class='font-barlow tracking-widest text-[14px] sm:text-2xl uppercase'><span class='text-gray-600 font-black whitespace-pre'>03 </span> @lang('space launch 101')</p>
     </div>
 
     <div class="grid lg:grid-cols-2 flex flex-col justify-center sm:justify-start lg:pb-32 lg:pl-20 lg:p-0 lg:ml-10 mt-10 sm:mt-20 lg:mt-0">
@@ -24,9 +24,9 @@
         <div class=' lg:order-1 pt-5 text-center lg:text-left flex flex-col lg:flex-row mt-10 lg:mr-10'>
             <nav class=' flex flex-col lg:flex-row  lg:mr-10 '>
                 <ul class='flex lg:flex-col flex-row justify-evenly'>
-                    <li><a class="{{ $techno != __('launcher') ? '' : 'border-white bg-white text-darkB ' }}  text-center flex justify-center items-center border border-solid border-white/40 hover:border-white rounded-full size-20" href="/technology/launcher">1</a></li>
-                    <li><a class="{{ $techno != __('spaceport') ? '' : 'border-white bg-white text-darkB ' }} border border-solid border-white/40 hover:border-white rounded-full size-20 text-center flex justify-center items-center" href="/technology/spaceport">2</a></li>  
-                    <li><a class="{{ $techno != __('capsule') ? '' : 'border-white bg-white text-darkB ' }} border border-solid border-white/40 hover:border-white  rounded-full size-20 text-center flex justify-center items-center" href="/technology/capsule">3</a></li>
+                    <li><a class="{{ $name != __('the launcher') ? '' : 'border-white bg-white text-darkB ' }}  text-center flex justify-center items-center border border-solid border-white/40 hover:border-white rounded-full size-20" href="/technology/@lang('the_launcher')">1</a></li>
+                    <li><a class="{{ $name != __('the spaceport') ? '' : 'border-white bg-white text-darkB ' }} border border-solid border-white/40 hover:border-white rounded-full size-20 text-center flex justify-center items-center" href="/technology/@lang('the_spaceport')">2</a></li>  
+                    <li><a class="{{ $name != __('the space capsule') ? '' : 'border-white bg-white text-darkB ' }} border border-solid border-white/40 hover:border-white  rounded-full size-20 text-center flex justify-center items-center" href="/technology/@lang('the_space_capsule')">3</a></li>
                 </ul>
             </nav>
             <div>

@@ -1,8 +1,12 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\BackController;
+use App\Http\Controllers\DestinationsController;
+use App\Http\Controllers\CrewController;
+use App\Http\Controllers\TechnologyController;
+use \App\Http\Middleware\Localization;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,42 +17,38 @@ use App\Http\Controllers\BackController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
 // language selection
 Route::get('language/{locale}', function ($locale) {
     app()->setLocale($locale);
     session()->put('locale', $locale);
-    return redirect()->back();
+    return Redirect::route('home');
 });
-// home page
+
 Route::get('/', function () {
-    return view('pages.index'); 
+    return view('pages.index');
 })->name('home');
 
+Route::get("/destination/{name}",[DestinationsController::class, 'show']);
 
-// destination
-Route::get('/destination', function(){
-    return redirect('/destination/'.'moon');
+Route::get("/crew/{name}",[CrewController::class, 'show']);
+
+Route::get("/technology/{name}",[TechnologyController::class, 'show']);
+
+
+Route::get("/dashboard", function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/destination/{name}',[PageController::class,'destination']);
-// crew
-Route::get('/crew', function(){
-    return redirect('/crew/'.'douglas_hurley');
-});
 
-Route::get('/crew/{name}',[PageController::class,'crew']);
-// technology
+require __DIR__.'/auth.php';
+// ______________________________________________
+// ______________________________________________
 
-Route::get('/technology', function(){
-    return redirect('/technology/'.'launcher');
-});
-
-Route::get('/technology/{name}',[PageController::class,'technology']);
-
-//--------------------------backspace----------------------------------
-// -------------------------_________----------------------------------
-Route::get('/login',[BackController::class,'login']);
-
-Route::get('/backspace',[BackController::class,'backspace']);
-
-
+Route::get('/backspace/destinations',[DestinationsController::class, 'index']);

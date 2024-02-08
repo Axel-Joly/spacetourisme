@@ -8,13 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Destination extends Model
 {
     use HasFactory;
-
-    protected $data = [
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
         'name',
         'image',
         'description',
         'distance',
         'duration',
     ];
-
 }
