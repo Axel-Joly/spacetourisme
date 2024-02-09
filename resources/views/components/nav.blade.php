@@ -39,11 +39,11 @@ isset($part[3]) ? $page = $part[3] : $page="";
         </li>
        
         <li class="{{ $page != 'crew' ? '' : 'border-r-white border-r-4' }} hover:border-r-white hover:border-r-4 sm:border-none">
-            <a class="{{ $page != 'crew' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase" href="/crew/douglas_hurley"><span class="font-black sm:hidden xl:inline whitespace-pre">02 </span> @lang('crew')</a>
+            <a class="{{ $page != 'crew' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase" href="/@lang('crew')/douglas_hurley"><span class="font-black sm:hidden xl:inline whitespace-pre">02 </span> @lang('crew')</a>
         </li>
         
         <li class="{{ $page != 'technology' ? '' : 'border-r-white border-r-4' }} hover:border-r-white hover:border-r-4 sm:border-none">
-            <a class="{{ $page != 'technology' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase" href="/technology/@lang('the_launcher')"><span class="font-black sm:hidden xl:inline whitespace-pre">03 </span> @lang('technology')</a>
+            <a class="{{ $page != 'technology' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase" href="/@lang('technology')/@lang('the_launcher')"><span class="font-black sm:hidden xl:inline whitespace-pre">03 </span> @lang('technology')</a>
         </li>
         <li>
             <div>

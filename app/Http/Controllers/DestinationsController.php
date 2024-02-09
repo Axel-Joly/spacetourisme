@@ -46,13 +46,14 @@ class DestinationsController extends Controller
     public function show(string $name)
     {
         // recuperation d'url
+        echo $name;
         $url = url()->current();
         $location = explode("/",$url) ;
         // print_r($location);
         $page = $location[3];
-        $path=$location[4];
+        
         // formatage du nom
-        $newPath = explode("_",$path);
+        $newPath = explode("_",$name);
         $name= implode(" ",$newPath);
        // verifications
         if( app()->getLocale() == 'en'){
@@ -63,7 +64,7 @@ class DestinationsController extends Controller
             
             $destination = DB::table('destinations_fr')->where('name',__($name))->first();
         }
-        if(!isset($location[4]) && isset($name, $destination)){
+        if(!isset($name) && isset($name, $destination)){
            abort(404);    
         }
         // creation des variables de donnée
@@ -85,7 +86,7 @@ class DestinationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $name)
     {
         //
     }
@@ -93,7 +94,7 @@ class DestinationsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $name)
     {
         //
     }
@@ -101,7 +102,7 @@ class DestinationsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $name)
     {
         //
     }

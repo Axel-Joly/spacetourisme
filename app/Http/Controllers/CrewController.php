@@ -43,14 +43,9 @@ class CrewController extends Controller
      */
     public function show(string $name)
     {
-        // recuperation d'url
-        $url = url()->current();
-        $location = explode("/",$url) ;
-        // print_r($location);
-        $page = $location[3];
-        $path=$location[4];
+       
         // formatage du nom
-        $newPath = explode("_",$path);
+        $newPath = explode("_",$name);
         $name= implode(" ",$newPath);
        // verifications
        if(app()->getLocale() == 'en'){
@@ -58,7 +53,7 @@ class CrewController extends Controller
         }else if(app()->getLocale() == 'fr'){
             $crews = DB::table('crews_fr')->where('name',__($name))->first();
         }
-        if(!isset($location[4]) && isset($name, $crews)){
+        if(!isset($name) && isset($name, $crews)){
              abort(404);    
         }
 

@@ -265,5 +265,6 @@
     "welcome administrator":"bienvenue administrateur",
     "edit":"modifier",
     "view":"apercu",
-    "delete":"supprimer"
+    "delete":"supprimer",
+    "add":"ajouter"
 }
