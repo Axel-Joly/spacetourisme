@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Session;
-use App\Models\Destination;
+use App\Models\Crew;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Middleware\Localization;
 
@@ -18,11 +18,16 @@ class CrewController extends Controller
      */
     public function index()
     {
-        $list = Crew::all();
-        
-        return view('back.crew',[
-            'list' => $list,
+        $locale = app()->getLocale();
+        $list = Crew::all(["id", "name", "{$locale}_description as description","{$locale}_grade as grade","image"]);
+        $page= 'crew';
+        foreach($list as $item){
             
+        }
+        return view('back.crew',[
+            'id'=>$item->id,
+            'list' => $list,
+            'page'=>$page,
         ]);
 
     }
@@ -49,7 +54,7 @@ class CrewController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $name)
+    public function show(string $id)
     {
        
         // formatage du nom
@@ -82,29 +87,27 @@ class CrewController extends Controller
     /**
      * Display the specified resource.
      */
-    public function view(string $name)
+    public function view(string $id)
     {
        
-        // formatage du nom
-        $newPath = explode("_",$name);
-        $name= implode(" ",$newPath);
+        $locale = app()->getLocale();
+        $page = 'crew';
+       
+        $crew = Crew::where('id',$id)->first([ "name", "{$locale}_description as description","{$locale}_grade as grade","image"]);
        // verifications
-       if(app()->getLocale() == 'en'){
-            $crews = DB::table('crews')->where('name',__($name))->first();
-        }else if(app()->getLocale() == 'fr'){
-            $crews = DB::table('crews_fr')->where('name',__($name))->first();
-        }
-        if(!isset($name) && isset($name, $crews)){
-             abort(404);    
+      
+        if(isset($id) && !isset($id, $crew)){
+            abort(404);    
         }
 
         // creation des variables de donnée
-        $name = $crews->name;
-        $image = $crews->image;
-        $description = $crews->description;
-        $grade = $crews->grade;
+        $name = $crew->name;
+        $image = $crew->image;
+        $description = $crew->description;
+        $grade = $crew->grade;
     
         return view('back.view', [
+            'id'=>$id,
             'name' => $name,
             'image' => $image,
             'description' => $description,

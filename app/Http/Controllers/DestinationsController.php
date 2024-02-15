@@ -21,6 +21,7 @@ class DestinationsController extends Controller
         $locale = app()->getLocale();
         $list = Destination::all(["id", "{$locale}_name as name", "{$locale}_description as description","{$locale}_distance as distance", "{$locale}_duration as duration","image"]);
         $page= 'destination';
+
         foreach($list as $item){
             
         }
@@ -29,7 +30,6 @@ class DestinationsController extends Controller
             'id'=>$item->id,
             'list' => $list,
             'page'=>$page,
-            
         ]);
 
     }
@@ -50,18 +50,27 @@ class DestinationsController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-    //    $request->validate([
-    //         'image' => 'required|mimes:png,jpeg|max:2048',
-    //     ]);
-        $imgdir = "{{asset('/img')}}";
+        $request->validate([
+            'en_name'=> 'required',
+            'fr_name'=> 'required',
+            'image' => 'required|image|mimes:png,jpeg|max:2048',
+            'en_description'=> 'required',
+            'fr_description'=> 'required',
+            'en_distance'=> 'required',
+            'fr_distance'=> 'required',
+            'en_duration'=> 'required',
+            'fr_duration'=> 'required',
+        ]);
+
+        
         $destination = new Destination;
         $destination->en_name = $request->input('en_name');
-        $destination->en_description = $request->input('en_description');
-        $destination->en_distance = $request->input('en_distance');
-        $destination->en_duration = $request->input('en_duration');
         $destination->fr_name = $request->input('fr_name');
+        $destination->en_description = $request->input('en_description');
         $destination->fr_description = $request->input('fr_description');
+        $destination->en_distance = $request->input('en_distance');
         $destination->fr_distance = $request->input('fr_distance');
+        $destination->en_duration = $request->input('en_duration');
         $destination->fr_duration = $request->input('fr_duration');
         
         if($request->file('image')){
@@ -119,9 +128,7 @@ class DestinationsController extends Controller
     {
         
         $locale = app()->getLocale();
-        $url = url()->current();
-        $location = explode("/",$url) ;
-        $page = $location[3];
+        $page = 'destination';
        
         $destination = Destination::where('id',$id)->first([ "{$locale}_name as name", "{$locale}_description as description","{$locale}_distance as distance", "{$locale}_duration as duration","image"]);
              
@@ -175,6 +182,18 @@ class DestinationsController extends Controller
     public function update(Request $request, string $id)
     {
         $destination = Destination::where('id',$id)->first();
+
+        $request->validate([
+            'en_name'=> 'required',
+            'fr_name'=> 'required',
+            'image' => 'required|image|mimes:png,jpeg|max:2048',
+            'en_description'=> 'required',
+            'fr_description'=> 'required',
+            'en_distance'=> 'required',
+            'fr_distance'=> 'required',
+            'en_duration'=> 'required',
+            'fr_duration'=> 'required',
+        ]);
 
         $destination->en_name = $request->input('en_name');
         $destination->en_description = $request->input('en_description');

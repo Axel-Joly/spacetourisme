@@ -80,16 +80,19 @@ Route::prefix('/backspace')->middleware('auth')->group(function () {
         Route::post('/add',[CrewController::class, 'store'])->name('crew.store');
         Route::get('/{crew}/view',[CrewController::class, 'view'])->name('crew.view');
         Route::get('/{crew}/edit',[CrewController::class, 'edit'])->name('crew.edit');
-        Route::patch('/{crew}/edit', [CrewController::class, 'update'])->name('crew.update');
-        Route::delete('/{crew}/edit', [CrewController::class, 'destroy'])->name('crew.destroy');
+        Route::patch('/{crew}/update', [CrewController::class, 'update'])->name('crew.update');
+        Route::get('/{crew}/delete',[CrewController::class, 'delete'])->name('crew.delete');
+        Route::delete('/{crew}/destroy', [CrewController::class, 'destroy'])->name('crew.destroy');
     });
     Route::prefix('/technology')->group(function () {
         Route::get('/',[TechnologyController::class, 'index'])->name('technology.index');
         Route::get('/add',[TechnologyController::class, 'create'])->name('technology.create');
         Route::post('/add',[TechnologyController::class, 'store'])->name('technology.store');
-        Route::get('/{technology}',[TechnologyController::class, 'edit'])->name('technology.edit');
-        Route::patch('/{technology}', [TechnologyController::class, 'update'])->name('technology.update');
-        Route::delete('/{technology}', [TechnologyController::class, 'destroy'])->name('technology.delete');
+        Route::get('/{technology}/view',[TechnologyController::class, 'view'])->name('technology.view');
+        Route::get('/{technology}/edit',[TechnologyController::class, 'edit'])->name('technology.edit');
+        Route::patch('/{technology}/update', [TechnologyController::class, 'update'])->name('technology.update');
+        Route::get('/{technology}/delete',[TechnologyController::class, 'delete'])->name('technology.delete');
+        Route::delete('/{technology}/destroy', [TechnologyController::class, 'destroy'])->name('technology.destroy');
     });
     
 });

@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
+use App\Models\Technology;
+use Illuminate\Http\RedirectResponse;
+use App\Http\Middleware\Localization;
+use Illuminate\Support\Facades\Storage;
 
 class TechnologyController extends Controller
 {
@@ -12,9 +18,11 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        $list = DB::table('technologies')->get();
+        $page='technology';
+        $list = Technology::all();
         
         return view('back.technology',[
+            'page'=>$page,
             'list' => $list,
             
         ]);

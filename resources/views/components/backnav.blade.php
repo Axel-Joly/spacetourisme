@@ -40,11 +40,11 @@ isset($part[4]) ? $page = $part[4] : $page="/backspace";
         </li>
        
         <li class="{{ $page != '/backspace/crew' ? '' : 'border-r-white border-r-4' }} hover:border-r-white hover:border-r-4 sm:border-none">
-            <a class="{{ $page != '/backspace/crew' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase" href="/backspace/@lang('crew')"><span class="font-black sm:hidden xl:inline whitespace-pre">X2 </span> @lang('crew')</a>
+            <a class="{{ $page != '/backspace/crew' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase" href="/backspace/crew"><span class="font-black sm:hidden xl:inline whitespace-pre">X2 </span> @lang('crew')</a>
         </li>
         
         <li class="{{ $page != '/backspace/technology' ? '' : 'border-r-white border-r-4' }} hover:border-r-white hover:border-r-4 sm:border-none">
-            <a class="{{ $page != '/backspace/technology' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase" href="/backspace/@lang('technology')"><span class="font-black sm:hidden xl:inline whitespace-pre">X3 </span> @lang('technology')</a>
+            <a class="{{ $page != '/backspace/technology' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase" href="/backspace/technology"><span class="font-black sm:hidden xl:inline whitespace-pre">X3 </span> @lang('technology')</a>
         </li>
         <li>
             <div>
