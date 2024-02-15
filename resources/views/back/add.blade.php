@@ -20,31 +20,40 @@ isset($part[4]) ? $page = $part[4] : abort(404);
     <form action="{{ route($page.'.store') }}" method="post" class='flex flex-col w-[20%] ml-10 text-darkB gap-2'enctype="multipart/form-data">
         @csrf
         @if ($errors->any())
-            <div>
-                <ul class='flex flex-col gap-2'>
-                    @foreach ($errors->all() as $error)
-                        <li class=" bg-[#ff0000]/30 rounded pl-2">{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+        @foreach ($errors->all() as $error)
+        @endforeach      
         @endif
         @if($page == 'crew')
         <label for="name">nom</label><input name='name' type="text" ><br>
+        @error('name'){{$error}} @enderror 
         <label for="en_grade">grade(anglais)</label><input name='en_grade' type="text" >
         <label for="fr_grade">grade(français)</label><input name='fr_grade' type="text" ><br>
         @endif
         @if($page != 'crew')
         <label for="en_name">nom(anglais)</label><input name='en_name' type="text" >
-        <label for="fr_name">nom(français)</label><input name='fr_name' type="text" ><br>
+        @error('en_name')<p class=" bg-[#ff0000]/30 rounded pl-2">{{$error}}</p> @enderror 
+        <label for="fr_name">nom(français)</label><input name='fr_name' type="text" >
+        @error('fr_name')<p class=" bg-[#ff0000]/30 rounded pl-2">{{$error}}</p> @enderror 
+        <br>
         @endif
         <label for="en_description">description(anglais)</label><input name='en_description' type="text" >
+        @error('en_description')<p class=" bg-[#ff0000]/30 rounded pl-2">{{$error}}</p> @enderror 
         <label for="fr_description">description(français)</label><input name='fr_description' type="text" ><br>
-        <label for="image">image</label><input name='image' type="file" accept="image/png, image/jpeg" ><br>
+        @error('fr_description')<p class=" bg-[#ff0000]/30 rounded pl-2">{{$error}}</p> @enderror 
+        <label for="image">image</label><input name='image' type="file" accept="image/png, image/jpeg" >
+        @error('image')<p class=" bg-[#ff0000]/30 rounded pl-2">{{$error}}</p> @enderror 
+        <br>
         @if($page == 'destination')
         <label for="en_distance">distance(anglais)</label><input name='en_distance' type="text" >
-        <label for="fr_distance">distance(français)</label><input name='fr_distance' type="text" ><br>
+        @error('en_distance')<p class=" bg-[#ff0000]/30 rounded pl-2">{{$error}}</p> @enderror 
+        <label for="fr_distance">distance(français)</label><input name='fr_distance' type="text" >
+        @error('en_distance')<p class=" bg-[#ff0000]/30 rounded pl-2">{{$error}}</p> @enderror 
+        <br>
         <label for="en_duration">durée(anglais)</label><input name='en_duration' type="text" >
-        <label for="fr_duration">durée(français)</label><input name='fr_duration' type="text" ><br>
+        @error('en_duration')<p class=" bg-[#ff0000]/30 rounded pl-2">{{$error}}</p> @enderror 
+        <label for="fr_duration">durée(français)</label><input name='fr_duration' type="text" >
+        @error('en_duration')<p class=" bg-[#ff0000]/30 rounded pl-2">{{$error}}</p> @enderror 
+        <br>
         @endif
         
         <input type="submit" value="ajouter">
