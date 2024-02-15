@@ -15,9 +15,11 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('grade');
+            $table->string('en_grade');
+            $table->string('fr_grade');
             $table->string('image');
-            $table->text('description');
+            $table->text('en_description');
+            $table->text('fr_description');
         });
     }
 

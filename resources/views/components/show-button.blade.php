@@ -1,0 +1,1 @@
+<a href='<?= url()->current()."/".$name."/".__('view')?>' class='font-barlowC text-center w-20 bg-darkB/40 rounded border uppercase'>@lang('view')</a>

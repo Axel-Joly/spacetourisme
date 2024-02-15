@@ -27,20 +27,20 @@
 
         <div class='pt-10'>
             <ul class='flex flex-row justify-evenly lg:justify-start lg:gap-10 uppercase font-barlow tracking-widest underline-offset-[10px] '>
-                <li class="{{ __($name) != __('moon') ? '' : 'underline decoration-4 decoration-white' }} hover:underline decoration-4 decoration-gray-600"><a href="/destination/@lang('moon')">@Lang('moon')</a></li>
-                <li class="{{ $name != __('mars') ? '' : 'underline decoration-4 decoration-white' }} hover:underline decoration-4 decoration-gray-600"><a href="/destination/@lang('mars')">@Lang('mars')</a></li>
-                <li class="{{ $name != __('europa') ? '' : 'underline decoration-4 decoration-white' }} hover:underline decoration-4 decoration-gray-600"><a href="/destination/@lang('europa')">@Lang('europa')</a></li>
-                <li class="{{ $name != __('titan') ? '' : 'underline decoration-4 decoration-white' }} hover:underline decoration-4 decoration-gray-600"><a href="/destination/@lang('titan')">@Lang('titan')</a></li>
+            
+            @foreach($list as $item)   
+                <li class="{{$id != $item->id ?'': 'underline decoration-4 decoration-white '}}hover:underline decoration-4 decoration-gray-600"><a href="/destination/{{$item->id}}">{{$item->name}}</a></li>
+            @endforeach
             </ul>
         </div>
 
         <div class='pt-5'>
-            <h1 class='text-6xl sm:text-8xl md:text-9xl font-bellefair uppercase'>@lang($name)  </h1>
+            <h1 class='text-6xl sm:text-8xl md:text-9xl font-bellefair uppercase'>{{$name}} </h1>
         </div>
 
         <div class='pb-10 text-[18px] font-barlow font-thin tracking-widest h-[50%]'>
            
-            <p>@lang($description)</p>
+            <p>{{$description}}</p>
             
             
         </div>
@@ -48,12 +48,12 @@
         <div class='border-t border-solid items-center sm:items-start border-white flex flex-col sm:flex-row py-5'>
             <div class='flex flex-col sm:justify-start my-5 sm:my-0 w-[50%]'>
                 <p class='font-barlow tracking-widest uppercase'>@lang('distance')</p>
-                <p class='font-bellefair text-[36px]'>@lang($distance)</p>
+                <p class='font-bellefair text-[36px]'>{{$distance}}</p>
                 
             </div>
             <div class='flex flex-col justify-start w-[50%] '>
                 <p class='font-barlow tracking-widest uppercase'>@lang('duration')</p>
-                <p class='font-bellefair text-4xl'>@lang($duration)</p>
+                <p class='font-bellefair text-4xl'>{{$duration}}</p>
             </div>
         </div>
 

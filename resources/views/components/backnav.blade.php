@@ -4,7 +4,8 @@
 $url = url()->current();
 $part = explode("/",$url) ;
 // print_r($part) ;
-isset($part[3]) ? $page = $part[3] : $page="/backspace";
+isset($part[4]) ? $page = $part[4] : $page="/backspace";
+
 ?>
 
 
@@ -12,10 +13,10 @@ isset($part[3]) ? $page = $part[3] : $page="/backspace";
     
     <ul class='mt-5 z-40 sm:mt-0 justify-between sm:justify-evenly content-center items-center flex flex-row w-[100%] sm:gap-10 barlow'>
         <li>
-            <img class='ml-10'src='../img/Logo.png' alt='Logo'/>
+            <img class='ml-10'src={{asset('/img/Logo.png')}} alt='Logo'/>
         </li>
         <li>
-            <img class="relative z-10 left-10 hidden lg:inline" src='../img/Decoration.png' alt='decoration'/>
+            <img class="relative z-10 left-10 hidden lg:inline" src={{asset('/img/Decoration.png')}} alt='decoration'/>
         </li>
         <li class='sm:hidden z-20 relative mr-10 '>
         <div class=" cursor-pointer z-50 "id="burger">
@@ -39,11 +40,11 @@ isset($part[3]) ? $page = $part[3] : $page="/backspace";
         </li>
        
         <li class="{{ $page != '/backspace/crew' ? '' : 'border-r-white border-r-4' }} hover:border-r-white hover:border-r-4 sm:border-none">
-            <a class="{{ $page != '/backspace/crew' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase" href="/backspace/crew"><span class="font-black sm:hidden xl:inline whitespace-pre">X2 </span> @lang('crew')</a>
+            <a class="{{ $page != '/backspace/crew' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase" href="/backspace/@lang('crew')"><span class="font-black sm:hidden xl:inline whitespace-pre">X2 </span> @lang('crew')</a>
         </li>
         
         <li class="{{ $page != '/backspace/technology' ? '' : 'border-r-white border-r-4' }} hover:border-r-white hover:border-r-4 sm:border-none">
-            <a class="{{ $page != '/backspace/technology' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase" href="/backspace/technology"><span class="font-black sm:hidden xl:inline whitespace-pre">X3 </span> @lang('technology')</a>
+            <a class="{{ $page != '/backspace/technology' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase" href="/backspace/@lang('technology')"><span class="font-black sm:hidden xl:inline whitespace-pre">X3 </span> @lang('technology')</a>
         </li>
         <li>
             <div>

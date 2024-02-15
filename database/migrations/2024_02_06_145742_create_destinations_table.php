@@ -14,11 +14,15 @@ return new class extends Migration
         Schema::create('destinations', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name');
             $table->string('image');
-            $table->text('description');
-            $table->string('distance');
-            $table->string('duration');
+            $table->string('en_name');
+            $table->string('fr_name');
+            $table->text('en_description');
+            $table->text('fr_description');
+            $table->string('en_distance');
+            $table->string('fr_distance');
+            $table->string('en_duration');
+            $table->string('fr_duration');
         });
     }
 

@@ -14,10 +14,14 @@ class Destination extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
         'image',
-        'description',
-        'distance',
-        'duration',
+        'en_name',
+        'fr_name',
+        'en_description',
+        'fr_description',
+        'en-distance',
+        'fr_distance',
+        'en_duration',
+        'fr_duration',
     ];
 }

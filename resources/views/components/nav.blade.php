@@ -35,7 +35,7 @@ isset($part[3]) ? $page = $part[3] : $page="";
         </li>
 
         <li class="{{ $page != 'destination' ? '' : 'border-r-white border-r-4' }} hover:border-r-white hover:border-r-4 sm:border-none">
-            <a class="{{ $page != 'destination' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase " href="/destination/@lang('moon')"><span class="font-black sm:hidden xl:inline whitespace-pre">01 </span> @lang('destination')</a>
+            <a class="{{ $page != 'destination' ? '' : 'sm:underline sm:decoration-lightB' }} inline-flex sm:hover:underline underline-offset-[30px] decoration-4  sm:decoration-gray-300 uppercase " href={{route('destination.id','1')}}><span class="font-black sm:hidden xl:inline whitespace-pre">01 </span> @lang('destination')</a>
         </li>
        
         <li class="{{ $page != 'crew' ? '' : 'border-r-white border-r-4' }} hover:border-r-white hover:border-r-4 sm:border-none">

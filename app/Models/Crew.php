@@ -16,8 +16,9 @@ class Crew extends Model
     protected $fillable = [
         'name',
         'image',
-        'description',
-        'grade',
-        
+        'en_description',
+        'fr_description',
+        'en_grade',
+        'fr_grade',
     ];
 }
