@@ -6,7 +6,7 @@
 @include('components.backnav')
 
 <main class='flex flex-col pt-32 pb-24 '>
-    <h1 class=" ml-32 text-2xl font-bellefair uppercase w-max"> @lang("$name")</h1>
+    <h1 class=" ml-32 text-2xl font-bellefair uppercase w-max"> {{isset($locale)? $fr_name :$name}}</h1>
     <div class='w-[20%] ml-20 mt-10'>
        
     <p><span class=' font-barlow text-xl uppercase'>@lang('description') : </span>{{$description}}</p>

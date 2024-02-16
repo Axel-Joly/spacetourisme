@@ -105,6 +105,33 @@ class TechnologyController extends Controller
         ]);
     }
 
+    public function view(string $id)
+    {
+        $locale = app()->getLocale();
+        $page = 'technology';
+        $list = Technology::all(["id", "{$locale}_name as name"]); 
+        $technologies = Technology::where('id',$id)->first(["id", "{$locale}_name as name", "{$locale}_description as description","image"]);
+        
+         if(!isset($id) && isset($id, $technologies)){
+            abort(404);    
+         }
+
+        // creation des variables de donnée
+        $name = $technologies->name;
+        $image = $technologies->image;
+        $description = $technologies->description;
+
+        return view('back.view', [
+            'page'=>$page,
+            'id' =>$id,
+            'list'=> $list,
+            'name' => $name,
+            'image' => $image,
+            'description' => $description,
+                
+        ]);
+    }
+
     /**
      * Show the form for editing the specified resource.
      */
