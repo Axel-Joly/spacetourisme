@@ -18,9 +18,10 @@ class TechnologyController extends Controller
      */
     public function index()
     {
+        $locale = app()->getLocale();
         $page='technology';
-        $list = Technology::all();
-        
+        $list = Technology::all(["id", "{$locale}_name as name", "{$locale}_description as description","image"]);
+
         return view('back.technology',[
             'page'=>$page,
             'list' => $list,
@@ -44,7 +45,35 @@ class TechnologyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'en_name'=> 'required',
+            'fr_name'=> 'required',
+            'image' => 'required|image|mimes:png,jpeg|max:2048',
+            'en_description'=> 'required',
+            'fr_description'=> 'required',
+           
+        ]);
+
+        
+        $technology = new Technology;
+        $technology->en_name = $request->input('en_name');
+        $technology->fr_name = $request->input('fr_name');
+        $technology->en_description = $request->input('en_description');
+        $technology->fr_description = $request->input('fr_description');
+        
+        
+        if($request->file('image')){
+            
+            $filename = $request->file('image')->store('img','public');
+            $technology->image = 'storage/'.$filename;
+            
+        }
+       
+        
+        $technology->save();
+        
+        return redirect()->route('technology.index')->with('great');
+        
     }
 
     /**
@@ -52,22 +81,12 @@ class TechnologyController extends Controller
      */
     public function show(string $id)
     {
-         // recuperation d'url
-         $url = url()->current();
-         $location = explode("/",$url) ;
-         // print_r($location);
-         $page = $location[3];
-         $path=$location[4];
-         // formatage du nom
-         $newPath = explode("_",$path);
-         $name= implode(" ",$newPath);
-        // verifications
-         if( app()->getLocale() == 'en'){
-              $technologies = DB::table('technologies')->where('name',__($name))->first();
-         }else if(app()->getLocale() == 'fr'){
-             $technologies = DB::table('technologies_fr')->where('name',__($name))->first();
-         }
-         if(!isset($location[4]) && isset($name, $technologies)){
+        $locale = app()->getLocale();
+        $page = __('technology');
+        $list = Technology::all(["id", "{$locale}_name as name"]); 
+        $technologies = Technology::where('id',$id)->first(["id", "{$locale}_name as name", "{$locale}_description as description","image"]);
+        
+         if(!isset($id) && isset($id, $technologies)){
             abort(404);    
          }
 
@@ -77,6 +96,8 @@ class TechnologyController extends Controller
         $description = $technologies->description;
 
         return view('pages.technology', [
+            'id' =>$id,
+            'list'=> $list,
             'name' => $name,
             'image' => $image,
             'description' => $description,

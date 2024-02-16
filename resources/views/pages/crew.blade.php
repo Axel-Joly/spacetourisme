@@ -28,10 +28,9 @@
 
         <div class='mt-24'>
             <ul class='flex flex-row justify-center gap-10 lg:justify-start lg:gap-10 uppercase mb-20 font-barlow'>
-                <li class="{{ $name != __('douglas hurley') ? '' : 'bg-white' }} hover:bg-gray-500  rounded-full h-3 list-inside  decoration-4 bg-gray-800"><a href="/@lang('crew')/douglas_hurley" class='opacity-0 ' >o</a></li>
-                <li class="{{ $name != __('mark shuttleworth') ? '' : 'bg-white' }} hover:bg-gray-500  rounded-full h-3 decoration-4 bg-gray-800"><a href="/@lang('crew')/mark_shuttleworth" class='opacity-0 '>o</a></li>
-                <li class="{{ $name != __('victor glover') ? '' : 'bg-white' }} hover:bg-gray-500  rounded-full h-3 decoration-4 bg-gray-800"><a href="/@lang('crew')/victor_glover" class='opacity-0 '>o</a></li>
-                <li class="{{ $name != __('anousheh ansari') ? '' : 'bg-white' }} hover:bg-gray-500 rounded-full h-3 decoration-4 bg-gray-800"><a href="/@lang('crew')/anousheh_ansari" class='opacity-0 '>o</a></li>
+             @foreach($list as $item) 
+            <li class="{{ $name != $item->name ? '' : 'bg-white' }} hover:bg-gray-500  rounded-full h-3 list-inside  decoration-4 bg-gray-800"><a href="/@lang('crew')/{{$item->id}}" class='opacity-0 ' >o</a></li>
+            @endforeach
             </ul>
         </div>
         

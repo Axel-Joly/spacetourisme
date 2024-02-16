@@ -48,10 +48,10 @@ Route::get("/crew/{crew}",[CrewController::class, 'show']);
 Route::get("/".__('crew')."/{crew}",[CrewController::class, 'show']);
 // TECHNOLOGY
 Route::get("/".__('technology'),function(){
-    return redirect("/".__('technology')."/douglas_hurley");
+    return redirect("/".__('technology')."/1");
  }); 
 Route::get("/technology",function(){
-    return redirect("/technology/douglas_hurley");
+    return redirect("/technology/1");
 });
 Route::get("/technology/{technology}",[TechnologyController::class, 'show']);
 Route::get("/".__('technology')."/{technology}",[TechnologyController::class, 'show']);

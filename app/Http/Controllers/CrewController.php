@@ -48,7 +48,36 @@ class CrewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=> 'required',
+            'image' => 'required|image|mimes:png,jpeg|max:2048',
+            'en_description'=> 'required',
+            'fr_description'=> 'required',
+            'en_grade'=> 'required',
+            'fr_grade'=> 'required',
+        ]);
+
+        
+        $crew = new Crew;
+        $crew->en_name = $request->input('en_name');
+        $crew->fr_name = $request->input('fr_name');
+        $crew->en_description = $request->input('en_description');
+        $crew->fr_description = $request->input('fr_description');
+        $crew->en_distance = $request->input('en_distance');
+        $crew->fr_distance = $request->input('fr_distance');
+        $crew->en_duration = $request->input('en_duration');
+        $crew->fr_duration = $request->input('fr_duration');
+        
+        if($request->file('image')){
+            
+            $filename = $request->file('image')->store('img','public');
+            $crew->image = 'storage/'.$filename;
+            
+        }
+       
+        
+        $crew->save();
+        return redirect()->route('crew.index')->with('great');
     }
 
     /**
@@ -57,19 +86,16 @@ class CrewController extends Controller
     public function show(string $id)
     {
        
-        // formatage du nom
-        $newPath = explode("_",$name);
-        $name= implode(" ",$newPath);
+      
        // verifications
-       if(app()->getLocale() == 'en'){
-            $crews = DB::table('crews')->where('name',__($name))->first();
-        }else if(app()->getLocale() == 'fr'){
-            $crews = DB::table('crews_fr')->where('name',__($name))->first();
-        }
-        if(!isset($name) && isset($name, $crews)){
+        $locale = app()->getLocale();
+        $list = Crew::all(["id", "name", "{$locale}_description as description", "{$locale}_grade as grade","image"]);
+        $crews = Crew::where('id',$id)->first(["name", "image", "{$locale}_description as description", "{$locale}_grade as grade"]);
+       
+        if(!isset($id) && isset($id, $crews)){
              abort(404);    
         }
-
+        
         // creation des variables de donnée
         $name = $crews->name;
         $image = $crews->image;
@@ -77,6 +103,8 @@ class CrewController extends Controller
         $grade = $crews->grade;
     
         return view('pages.crew', [
+            'list'=>$list,
+            'id'=>$id,
             'name' => $name,
             'image' => $image,
             'description' => $description,

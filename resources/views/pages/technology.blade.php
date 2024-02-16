@@ -24,9 +24,9 @@
         <div class=' lg:order-1 pt-5 text-center lg:text-left flex flex-col lg:flex-row mt-10 lg:mr-10'>
             <nav class=' flex flex-col lg:flex-row  lg:mr-10 '>
                 <ul class='flex lg:flex-col flex-row justify-evenly'>
-                    <li><a class="{{ $name != __('the launcher') ? '' : 'border-white bg-white text-darkB ' }}  text-center flex justify-center items-center border border-solid border-white/40 hover:border-white rounded-full size-20" href="/@lang('technology')/@lang('the_launcher')">1</a></li>
-                    <li><a class="{{ $name != __('the spaceport') ? '' : 'border-white bg-white text-darkB ' }} border border-solid border-white/40 hover:border-white rounded-full size-20 text-center flex justify-center items-center" href="/@lang('technology')/@lang('the_spaceport')">2</a></li>  
-                    <li><a class="{{ $name != __('the space capsule') ? '' : 'border-white bg-white text-darkB ' }} border border-solid border-white/40 hover:border-white  rounded-full size-20 text-center flex justify-center items-center" href="/@lang('technology')/@lang('the_space_capsule')">3</a></li>
+                    @foreach($list as $item)
+                    <li><a class="{{ $name != $item->name ? '' : 'border-white bg-white text-darkB ' }}  text-center flex justify-center items-center border border-solid border-white/40 hover:border-white rounded-full size-20" href="/@lang('technology')/{{$item->id}}">{{$item->id}}</a></li>
+                    @endforeach
                 </ul>
             </nav>
             <div>
