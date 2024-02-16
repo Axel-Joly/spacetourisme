@@ -158,10 +158,12 @@ class DestinationsController extends Controller
      */
     public function edit(string $id)
     {
+        $locale = app()->getLocale();
         $page= 'destination';
         $destination = Destination::where('id',$id)->first();
         
         return view('back.edit',[
+            'locale'=>$locale,
             'id'=>$id,
             'en_name' => $destination->en_name,
             'fr_name' => $destination->fr_name,

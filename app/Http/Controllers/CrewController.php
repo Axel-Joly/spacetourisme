@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\Crew;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Middleware\Localization;
+use Illuminate\Support\Facades\Storage;
 
 class CrewController extends Controller
 {
@@ -59,14 +60,12 @@ class CrewController extends Controller
 
         
         $crew = new Crew;
-        $crew->en_name = $request->input('en_name');
-        $crew->fr_name = $request->input('fr_name');
+        $crew->name = $request->input('name');
         $crew->en_description = $request->input('en_description');
         $crew->fr_description = $request->input('fr_description');
-        $crew->en_distance = $request->input('en_distance');
-        $crew->fr_distance = $request->input('fr_distance');
-        $crew->en_duration = $request->input('en_duration');
-        $crew->fr_duration = $request->input('fr_duration');
+        $crew->en_grade = $request->input('en_grade');
+        $crew->fr_grade = $request->input('fr_grade');
+        
         
         if($request->file('image')){
             
@@ -148,7 +147,22 @@ class CrewController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
+        $page= 'crew';
+        $crew = Crew::where('id',$id)->first();
+        
+        return view('back.edit',[
+            
+            'id'=>$id,
+            'name' => $crew->name,
+            'page'=> $page,
+            'image' => $crew->image,
+            'en_description' => $crew->en_description,
+            'fr_description' => $crew->fr_description,
+            'en_grade' => $crew->en_grade,
+            'fr_grade' => $crew->fr_grade,
+            
+        ]);
     }
 
     /**
@@ -156,7 +170,41 @@ class CrewController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $crew = Crew::where('id',$id)->first();
+
+        $request->validate([
+
+            'name'=> 'required',
+            'image' => 'required|image|mimes:png,jpeg|max:2048',
+            'en_description'=> 'required',
+            'fr_description'=> 'required',
+            'en_grade'=> 'required',
+            'fr_grade'=> 'required',
+            
+        ]);
+
+        $crew->name = $request->input('name');
+        $crew->en_description = $request->input('en_description');
+        $crew->fr_description = $request->input('fr_description');
+        $crew->en_grade = $request->input('en_grade');
+        $crew->fr_grade = $request->input('fr_grade');
+        
+        $crew->save();
+
+        return redirect()->route('crew.index')->with('great');
+    }
+
+    
+    public function delete(string $id){
+        $page ='crew';
+        $locale = app()->getLocale();
+        $crew = Crew::where('id',$id)->first("name");
+        $name = $crew->name;
+        return view('back.delete',[
+            'id'=>$id,
+            'name' => $name,
+            'page'=>$page,
+        ]);
     }
 
     /**
@@ -164,6 +212,18 @@ class CrewController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $crew = Crew::where('id',$id)->first();
+        $path = explode('/',$crew->image);
+        array_splice($path,0,1);
+        print_r($path);
+        $image = implode('/',$path);
+        
+        if(Storage::disk('public')->exists($image)){
+            Storage::disk('public')->delete($image);
+        }
+        
+        
+        $crew->delete();
+       return redirect()->route('crew.index');
     }
 }

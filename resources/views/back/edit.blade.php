@@ -6,7 +6,7 @@
 @include('components.backnav')
 
 <main class='flex flex-col pt-32 pb-24 '>
-    <h1 class=" ml-20 text-2xl font-bellefair uppercase w-max"> voulez vous modifier : @lang("$fr_name")</h1>
+    <h1 class=" ml-20 text-2xl font-bellefair uppercase w-max"> voulez vous modifier : {{isset($locale)? $fr_name :$name}}</h1>
 
 <form action="{{ url('/backspace/'.$page.'/'.$id.'/edit') }}" method="post" class='flex flex-col w-[20%] ml-10 text-darkB gap-2'>
     @csrf

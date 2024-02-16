@@ -110,7 +110,21 @@ class TechnologyController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $locale = app()->getLocale();
+        $page= 'technology';
+        $technology = Technology::where('id',$id)->first();
+        
+        return view('back.edit',[
+            'locale'=>$locale,
+            'id'=>$id,
+            'en_name' => $technology->en_name,
+            'fr_name' => $technology->fr_name,
+            'page'=> $page,
+            'image' => $technology->image,
+            'en_description' => $technology->en_description,
+            'fr_description' => $technology->fr_description,
+        
+        ]);
     }
 
     /**
@@ -118,14 +132,59 @@ class TechnologyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $technology = Technology::where('id',$id)->first();
+
+        $request->validate([
+            'en_name'=> 'required',
+            'fr_name'=> 'required',
+            'image' => 'required|image|mimes:png,jpeg|max:2048',
+            'en_description'=> 'required',
+            'fr_description'=> 'required',
+          
+        ]);
+
+        $technology->fr_name = $request->input('fr_name');
+        $technology->en_name = $request->input('en_name');
+        $technology->en_description = $request->input('en_description');
+        $technology->fr_description = $request->input('fr_description');
+        
+        
+        $technology->save();
+
+        return redirect()->route('technology.index')->with('great');
     }
 
+
+    public function delete(string $id){
+        $page ='technology';
+        $locale = app()->getLocale();
+        $technology = Technology::where('id',$id)->first("{$locale}_name as name");
+        // print_r($technology);
+        // dd($id);
+        $name = $technology->name;
+        return view('back.delete',[
+            'id'=>$id,
+            'name' => $name,
+            'page'=>$page,
+        ]);
+    }
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        $technology = Technology::where('id',$id)->first();
+        $path = explode('/',$technology->image);
+        array_splice($path,0,1);
+        print_r($path);
+        $image = implode('/',$path);
+        
+        if(Storage::disk('public')->exists($image)){
+            Storage::disk('public')->delete($image);
+        }
+        
+        
+        $technology->delete();
+       return redirect()->route('technology.index');
     }
 }
