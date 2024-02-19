@@ -19,7 +19,7 @@
     <div></div>
 
     <div class="flex items-center justify-around lg:ml-[10%] m-[15%]">
-         <img  src="{{$image}}" alt='{{$name}}'/>
+         <img  src="{{asset($image)}}" alt='{{$name}}'/>
     </div>
 
     

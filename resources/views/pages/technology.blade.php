@@ -16,7 +16,7 @@
 
         <div class='lg:order-2 lg:flex flex-col'>
             <div class="flex lg:justify-end items-end lg:items-center justify-center w-full lg:w-auto max-h-[170px] sm:max-h-[310px] lg:max-h-none overflow-hidden">
-                <img class=" w-full lg:w-auto object-fill lg:object-none overscroll-none mb-[-15%] lg:mb-0 " src="{{ $image }}" alt="{{$name}}"/>
+                <img class=" w-full lg:w-auto object-fill lg:object-none overscroll-none mb-[-15%] lg:mb-0 " src="{{asset($image)}}" alt="{{$name}}"/>
             </div>
         </div>
         
